@@ -1,6 +1,7 @@
 package com.springmvc.Controller;
 
 import com.springmvc.Bean.Beer;
+import com.springmvc.Bean.BeerStyle;
 import com.springmvc.DAO.BeerDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,10 +23,10 @@ public class MainController {
 	public String showIndexPage(ModelMap model) {
 		model.addAttribute("message", "This is index!");
 
-        List<Beer> beers = beerDAO.findAllBeers();
+        List<BeerStyle> beers = beerDAO.findAllBeerStyles();
 
         for(int i = 0; i < beers.size(); i++){
-            System.out.println(beers.get(i).getBeerID() + ": " + beers.get(i).getName());
+            System.out.println(beers.get(i).getId() + ": " + beers.get(i).getBeerStyle());
         }
 
         return "index";

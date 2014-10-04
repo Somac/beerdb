@@ -12,9 +12,10 @@ public class BeerRowMapper implements RowMapper<Beer> {
     public Beer mapRow(ResultSet rs, int rowNum) throws SQLException {
         Beer beer = new BeerImpl();
 
-        beer.setBeerID(rs.getInt("beerID"));
-        beer.setProcess(rs.getString("process"));
+        beer.setId(rs.getInt("beerID"));
         beer.setName(rs.getString("name"));
+        beer.setProcess(rs.getString("process"));
+
 
         return beer;
     }
