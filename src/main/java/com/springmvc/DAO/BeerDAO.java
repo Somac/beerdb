@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface BeerDAO {
 
-    List<Beer> findAllBeers();
-    List<BeerStyle> findAllBeerStyles();
+    public List<Beer> findAllBeers();
+    public List<BeerStyle> findAllBeerStyles();
+    public Beer findBeer(int id);
 }

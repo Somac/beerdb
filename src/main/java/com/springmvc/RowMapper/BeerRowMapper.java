@@ -2,6 +2,9 @@ package com.springmvc.RowMapper;
 
 import com.springmvc.Bean.Beer;
 import com.springmvc.Bean.BeerImpl;
+import com.springmvc.Bean.RawMaterial;
+import com.springmvc.Bean.RawMaterialImpl;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -10,14 +13,27 @@ import java.sql.SQLException;
 public class BeerRowMapper implements RowMapper<Beer> {
 
     public Beer mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Beer beer = new BeerImpl();
+        Beer b = null;
 
-        beer.setId(rs.getInt("beerID"));
-        beer.setName(rs.getString("name"));
-        beer.setProcess(rs.getString("process"));
+        while(rs.next()){
+            if(b==null){
 
+              b = new BeerImpl();
 
-        return beer;
+              b.setId(rs.getInt("beerID"));
+              b.setName(rs.getString("name"));
+              b.setProcess(rs.getString("process"));
+
+            }
+            RawMaterial rm = new RawMaterialImpl();
+            rm.setId(rs.getInt("raw_materialID"));
+            rm.setRawMaterial(rs.getString("raw_material"));
+
+            b.addRawMaterial(rm);
+            System.out.println("DAO: " + rs.getString("raw_material"));
+
+        }
+        return b;
     }
 
 

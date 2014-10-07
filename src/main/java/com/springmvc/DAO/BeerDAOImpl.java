@@ -1,6 +1,7 @@
 package com.springmvc.DAO;
 
 import com.springmvc.Bean.Beer;
+import com.springmvc.Bean.BeerImpl;
 import com.springmvc.Bean.BeerStyle;
 import com.springmvc.RowMapper.BeerRowMapper;
 import com.springmvc.RowMapper.BeerStyleRowMapper;
@@ -35,5 +36,21 @@ public class BeerDAOImpl implements BeerDAO {
         List<BeerStyle> beerStyles = jdbcTemplate.query(sql, beerStyleRowMapper);
 
         return beerStyles;
+    }
+
+    public Beer findBeer(int id){
+        String sql =
+                "SELECT b.beerID, b.name, b.process, rm.raw_materialID, rm.raw_material\n" +
+                "FROM Beer as b, Beer_raw_material as brm, Raw_material as rm\n" +
+                "WHERE b.beerID=brm.beerID AND brm.raw_materialID=rm.raw_materialID AND b.beerID=?;";
+
+        Object[] parameters = new Object[]{id};
+
+        RowMapper<Beer> beerRowMapper = new BeerRowMapper();
+        List<Beer> b = jdbcTemplate.query(sql, parameters, beerRowMapper);
+
+        Beer beer = b.get(0);
+
+        return beer;
     }
 }
