@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 
     <script>
+        //ei toimi vielä!!
         $(function(){
             var hash = window.location.hash;
             hash && $('ul.nav a[href="' + hash + '"]').tab('show');
@@ -21,40 +24,23 @@
         });
         });
     </script>
+
 </head>
 
 <body>
-<!-- Navigation bar -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Database for Beers and Brewerys</a>
-        </div>
-<!-- Sign in -->
-        <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form">
-                <div class="form-group">
-                    <input type="text" placeholder="Username" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-default">Sign in</button>
-            </form>
-            <form class="navbar-form navbar-right" role="asd">
-                <div class="form-group">
-                    <button type="button" class="btn btn-default">Sign Up</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</nav>
+
+<!-- Page header comes from JSP Tags. It changes depending on the user role. This is for unregistered user -->
+<t:unregistereduser>
+    <jsp:attribute name="header">
+    </jsp:attribute>
+</t:unregistereduser>
 
 <!-- Introduction text -->
 <div class="container">
     <div class="jumbotron" style="background: transparent !important;">
         <h1>BeerDB</h1>
-        <p>Free time project for the lulz. BeerDB is your database for delicious beers and wonderful brewerys. Search
+        <p>Free time project for the lulz.</p>
+        <p>BeerDB is your database for delicious beers and wonderful brewerys. Search
             beers below.</p>
     </div>
 </div>

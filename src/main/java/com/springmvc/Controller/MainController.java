@@ -34,7 +34,7 @@ public class MainController {
         System.out.println(b);
 
         for(int i = 0; i < lista.size(); i++){
-            System.out.println(lista.get(i));
+            System.out.println(lista.get(i).getId());
         }
 
         return "index";
