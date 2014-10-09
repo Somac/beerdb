@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,22 +9,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link href="/resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="/resources/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/js/tabhref.js" rel="stylesheet" type="text/javascript"/>
+
     <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"> -->
-
-    <script>
-        //ei toimi vielä!!
-        $(function(){
-            var hash = window.location.hash;
-            hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-
-            $('.nav-tabs a').click(function (e) {
-                $(this).tab('show');
-                var scrollmem = $('body').scrollTop();
-                window.location.hash = this.hash;
-                $('html,body').scrollTop(scrollmem);
-        });
-        });
-    </script>
 
 </head>
 
@@ -52,9 +40,9 @@
     <!-- COLUMN ONE. Menu where beerstyles are listed -->
     <div class="col-md-4">
             <ul class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
-                <li class="active"><a href="#ykkostabi" data-toggle="tab">Home</a></li>
-                <li><a href="#kakkostabi" data-toggle="tab">Profile</a></li>
-                <li><a href="#kolmostabi" data-toggle="tab">Search</a></li>
+                <c:forEach items="${lista}" var="b">
+                    <li><a href="#" data-toggle="tab">${b.beerStyle}</a></li>
+                </c:forEach>
             </ul>
      </div>
 
@@ -99,9 +87,9 @@
         </span>
     </div>
 
-</div>
+</div> <!-- row -->
 
-</div>
+</div> <!-- container -->
 
 <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

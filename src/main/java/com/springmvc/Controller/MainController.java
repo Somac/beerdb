@@ -23,19 +23,12 @@ public class MainController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String showIndexPage(ModelMap model) {
-		model.addAttribute("message", "This is index!");
+
+        List<BeerStyle> bs = beerDAO.findAllBeerStyles();
+
+        model.addAttribute("bs", bs);
 
 
-
-        //testing
-        Beer b = beerDAO.findBeer(1);
-        List<RawMaterial> lista = b.getRawMaterial();
-
-        System.out.println(b);
-
-        for(int i = 0; i < lista.size(); i++){
-            System.out.println(lista.get(i).getId());
-        }
 
         return "index";
 	}
