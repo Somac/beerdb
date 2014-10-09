@@ -6,9 +6,9 @@
     <title>BeerDB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <%--<link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>--%>
-    <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/css/style.css" rel="stylesheet" type="text/css"/>
+    <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <script>
         //ei toimi vielä!!
@@ -37,30 +37,30 @@
 
 <!-- Introduction text -->
 <div class="container">
-    <div class="jumbotron" style="background: transparent !important;">
-        <h1>BeerDB</h1>
-        <p>Free time project for the lulz.</p>
-        <p>BeerDB is your database for delicious beers and wonderful brewerys. Search
-            beers below.</p>
-    </div>
+        <div class="jumbotron" style="background: transparent !important;">
+            <h1>BeerDB</h1>
+            <p>Free time project for the lulz.</p>
+            <p>BeerDB is your database for delicious beers and wonderful brewerys. Search
+                beers below.</p>
+        </div>
 </div>
 
 
+<div class="container">
+
 <div class="row">
     <!-- COLUMN ONE. Menu where beerstyles are listed -->
-    <div class="col-md-4 devSet"/>
-        <span class="pull-right">
-            <ul class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs" style="float:left; width:200px; clear:none;">
+    <div class="col-md-4">
+            <ul class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
                 <li class="active"><a href="#ykkostabi" data-toggle="tab">Home</a></li>
                 <li><a href="#kakkostabi" data-toggle="tab">Profile</a></li>
                 <li><a href="#kolmostabi" data-toggle="tab">Search</a></li>
             </ul>
-        </span>
      </div>
 
     <!-- COLUMN TWO. Menu where beers are listed by chosen beerstyle -->
-    <div class="col-md-2 devSet">
-            <div id="my-tab-content" class="tab-content" style="float:left; width:200px;">
+    <div class="col-md-4">
+            <div id="my-tab-content" class="tab-content">
                 <div class="tab-pane active" id="ykkostabi">
                      <ul class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
                          <li><a href="#facebooktab" data-toggle="tab">Facebook</a></li>
@@ -80,7 +80,7 @@
     </div>
 
     <!-- COLUMN THREE. All the information about chosen beer -->
-    <div class="col-md-4 devSet">
+    <div class="col-md-4">
         <span class="pull-left">
             <div class="tab-content">
                 <div class="tab-pane" id="facebooktab">
@@ -98,6 +98,9 @@
             </div>
         </span>
     </div>
+
+</div>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
