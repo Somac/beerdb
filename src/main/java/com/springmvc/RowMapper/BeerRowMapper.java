@@ -30,7 +30,6 @@ public class BeerRowMapper implements RowMapper<Beer> {
             rm.setRawMaterial(rs.getString("raw_material"));
 
             b.addRawMaterial(rm);
-            System.out.println("DAO: " + rs.getString("raw_material"));
 
         }
         return b;

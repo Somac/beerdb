@@ -1,6 +1,8 @@
 package com.springmvc.Bean;
 
 
+import java.util.List;
+
 public interface BeerStyle {
 
     public int getId();
@@ -8,6 +10,9 @@ public interface BeerStyle {
 
     public String getBeerStyle();
     public void setBeerStyle(String beerStyle);
+
+    public List<Beer> getBeer();
+    public void addBeer(Beer b);
 
 
 }

@@ -32,6 +32,7 @@ public class BeerDAOImpl implements BeerDAO {
 
     public List<BeerStyle> findAllBeerStyles(){
         String sql = "SELECT styleID, beer_style FROM Beer_style";
+
         RowMapper<BeerStyle> beerStyleRowMapper = new BeerStyleRowMapper();
         List<BeerStyle> beerStyles = jdbcTemplate.query(sql, beerStyleRowMapper);
 
