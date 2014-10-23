@@ -20,8 +20,27 @@
                 $.ajax({
                     type: "GET",
                     url: "fetchColumnTwo",
-                    data: "variable=" + variable
+                    data: "variable=" + variable,
+                    success: function(response){
+                        appendResponseToColumnTwo(response);
+                    },
+                    error: function(){
+                        alert('Ajax call caused error');
+                    }
                 })
+
+                function appendResponseToColumnTwo(response){
+                    console.log(response);
+
+                    var menu = $('#menu');
+                    menu.empty();
+
+                    for (var i = 0; i < response.length; i++){
+                        var output = "";
+                        output +="<li>" + response[i].name+ ", " + response[i].id + "</li>";
+                        menu.append(output);
+                    }
+                }
 
             });
         });
@@ -37,6 +56,8 @@
     </jsp:attribute>
 </t:unregistereduser>
 
+<ul id="menu"></ul>
+
 <!-- Introduction text -->
 <div class="container">
         <div class="jumbotron" style="background: transparent !important;">
@@ -44,6 +65,9 @@
             <p>Free time project for the lulz.</p>
             <p>BeerDB is your database for delicious beers and wonderful brewerys. Search
                 beers below.</p>
+
+            <span></span>
+
         </div>
 </div>
 

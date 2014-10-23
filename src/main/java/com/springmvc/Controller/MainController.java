@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -52,13 +53,29 @@ public class MainController {
         return "index";
 	}
 
-    @RequestMapping("fetchColumnTwo")
+    @RequestMapping(value="fetchColumnTwo", method = RequestMethod.GET)
     public @ResponseBody
-    String fetchColumnTwo(@RequestParam(value="variable") Integer variable){
+    List<Beer> fetchColumnTwo(@RequestParam(value="variable") Integer variable){
 
         System.out.println("CONTROLLER: " + variable);
 
-        String s = "Response: " + variable;
-        return s;
+
+        List<Beer> bisselista = new ArrayList<Beer>();
+
+        Beer kalja1 = new BeerImpl();
+        kalja1.setId(1);
+        kalja1.setName("Olvi");
+        kalja1.setProcess("Olvin process");
+
+        Beer kalja2 = new BeerImpl();
+        kalja2.setId(2);
+        kalja2.setName("Koff");
+        kalja2.setProcess("Koffin process");
+
+        bisselista.add(kalja1);
+        bisselista.add(kalja2);
+
+//        String s = "Response: " + variable;
+        return bisselista;
     }
 }
