@@ -1,12 +1,10 @@
 package com.springmvc.Bean;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BeerImpl implements Beer{
 
     private int id;
     private int styleID;
+    private int breweryID;
     private String name;
     private String process;
 
@@ -24,6 +22,14 @@ public class BeerImpl implements Beer{
 
     public void setStyleID(int styleID) {
         this.styleID = styleID;
+    }
+
+    public int getBreweryID() {
+        return breweryID;
+    }
+
+    public void setBreweryID(int breweryID) {
+        this.breweryID = breweryID;
     }
 
     public String getName() {

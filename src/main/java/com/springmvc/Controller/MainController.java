@@ -43,10 +43,22 @@ public class MainController {
     public @ResponseBody
     List<Beer> fetchColumnTwo(@RequestParam(value="styleID") Integer styleID){
 
-        System.out.println("CONTROLLER: " + styleID);
+        System.out.println("FIRST CONTROLLER: " + styleID);
 
         List<Beer> beerList = beerDAO.findAllBeersByStyle(styleID);
 
         return beerList;
+    }
+
+
+    @RequestMapping(value="fetchColumnThree", method = RequestMethod.GET)
+    public @ResponseBody
+    Beer fetchColumnThree(@RequestParam(value="beerID") Integer beerID){
+
+        System.out.println("SECOND CONTROLLER: " + beerID);
+
+        Beer b = beerDAO.findBeerByID(beerID);
+
+        return b;
     }
 }

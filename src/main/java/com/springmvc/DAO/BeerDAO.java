@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BeerDAO {
 
-
     public List<BeerStyle> findAllBeerStyles(); //Query for column one
     public List<Beer> findAllBeersByStyle(int styleID); //Query for column two
+    public Beer findBeerByID(int beerID); //Query for column three
 }

@@ -8,6 +8,9 @@ public interface Beer {
     public int getStyleID();
     public void setStyleID(int styleID);
 
+    public int getBreweryID();
+    public void setBreweryID(int breweryID);
+
     public String getName();
     public void setName(String name);
 

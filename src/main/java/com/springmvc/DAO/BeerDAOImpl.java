@@ -31,7 +31,7 @@ public class BeerDAOImpl implements BeerDAO {
     }
 
     public List<Beer> findAllBeersByStyle(int styleID){
-        String sql = "SELECT beerID, name, styleID FROM Beer WHERE styleID = ?";
+        String sql = "SELECT beerID, name, process, breweryID, styleID FROM Beer WHERE styleID = ?";
         Object[] parameters = new Object[]{styleID};
 
         RowMapper<Beer> beerRowMapper = new BeerRowMapper();
@@ -39,6 +39,17 @@ public class BeerDAOImpl implements BeerDAO {
         List<Beer> beers = jdbcTemplate.query(sql, parameters, beerRowMapper);
 
         return beers;
+    }
+
+    public Beer findBeerByID(int beerID){
+        String sql = "SELECT beerID, name, process, breweryID, styleID FROM Beer Where beerID = ?";
+        Object[] parameters = new Object[]{beerID};
+
+        RowMapper<Beer> beerRowMapper = new BeerRowMapper();
+
+        Beer beer = jdbcTemplate.queryForObject(sql, parameters, beerRowMapper);
+
+        return beer;
     }
 
 }

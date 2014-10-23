@@ -14,7 +14,7 @@
 
     <script>
         $(document).ready(function(){
-            $('#columnonelist li').click(function(){
+            $('#column-one-list li').click(function(){
                 var styleID = $(this).attr('value');
 
                 $.ajax({
@@ -25,21 +25,39 @@
                         appendResponseToColumnTwo(response);
                     },
                     error: function(){
-                        alert('Ajax call caused error');
+                        alert('Ajax call for second menu caused an error');
                     }
                 })
-
                 function appendResponseToColumnTwo(response){
                     console.log(response);
 
-                    var columnTwo = $('#columntwolist');
+                    var columnTwo = $('#column-two-list');
                     columnTwo.empty();
 
                     for (var i = 0; i < response.length; i++){
                         var output = "";
-                        output +="<li><a href=\"#twittertab\" data-toggle=\"tab\">" + response[i].name + "</a></li>";
+                        output +="<li value=\"" + response[i].id + "\"><a href=\"#placeholder\" data-toggle=\"tab\">"
+                                + response[i].name + " " + response[i].id + "</a></li>";
                         columnTwo.append(output);
                     }
+                }
+            });
+            $('#column-two-list').on('click', 'li', function(){
+                var beerID = $(this).attr('value')
+
+                $.ajax({
+                    type: "GET",
+                    url: "fetchColumnThree",
+                    data: "beerID=" + beerID,
+                    success: function(response){
+                        appendResponseToColumnThree(response);
+                    },
+                    error: function(){
+                        alert('Ajax call for third menu caused an error');
+                    }
+                })
+                function appendResponseToColumnThree(response){
+                    alert(response);
                 }
 
             });
@@ -49,6 +67,7 @@
 </head>
 
 <body>
+
 
 <!-- Page header comes from JSP Tags. It changes depending on the user role. This is for unregistered user -->
 <t:unregistereduser>
@@ -76,7 +95,7 @@
 
     <!-- COLUMN ONE. Menu where beerstyles are listed -->
     <div class="col-md-4">
-            <ul id="columnonelist" class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
+            <ul id="column-one-list" class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
                 <c:forEach items="${beerStyleList}" var="b">
                     <li value="${b.id}"><a href="#" data-toggle="tab">${b.beerStyle} ${b.id}</a></li>
                 </c:forEach>
@@ -86,32 +105,24 @@
     <!-- COLUMN TWO. Menu where beers are listed by chosen beerstyle -->
     <div class="col-md-4">
             <div id="my-tab-content" class="tab-content">
-                <div class="tab-pane active" id="ykkostabi">
-                     <ul id="columntwolist" class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
+                <div class="tab-pane active">
+                     <ul id="column-two-list" class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
                       </ul>
                 </div>
             </div>
     </div>
 
-    <%--<!-- COLUMN THREE. All the information about chosen beer -->--%>
-    <%--<div class="col-md-4">--%>
-        <%--<span class="pull-left">--%>
-            <%--<div class="tab-content">--%>
-                <%--<div class="tab-pane" id="facebooktab">--%>
-                    <%--<h1>Facebook</h1>--%>
-                    <%--<p>facebook facebook facebook facebook</p>--%>
-                <%--</div>--%>
-                <%--<div class="tab-pane" id="instagramtab">--%>
-                    <%--<h1>Instagram</h1>--%>
-                    <%--<p>instagram instagram instagram instagram</p>--%>
-                <%--</div>--%>
-                <%--<div class="tab-pane" id="twittertab">--%>
-                    <%--<h1>Twitter</h1>--%>
-                    <%--<p>twitter twitter twitter twitter</p>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</span>--%>
-    <%--</div>--%>
+    <!-- COLUMN THREE. All the information about chosen beer -->
+    <div class="col-md-4">
+        <span class="pull-left">
+            <div class="tab-content">
+                <div class="tab-pane" id="content">
+                    <h1>Placeholder</h1>
+                    <p>placeholder placeholder placeholder placeholder </p>
+                </div>
+            </div>
+        </span>
+    </div>
 
 </div> <!-- row -->
 </div> <!-- container -->
