@@ -31,51 +31,22 @@ public class MainController {
 //    }
 
     @RequestMapping(method = RequestMethod.GET)
-	public String showIndexPage(ModelMap model) {
+	public String showIndexPage(ModelMap model){
 
         List<BeerStyle> bs = beerDAO.findAllBeerStyles();
 
-//        System.out.println("-----------");
-//        for(int i = 0; i < bs.size(); i++){
-//            System.out.println(bs.get(i).getBeerStyle());
-//
-//            for(int j = 0; j < bs.get(i).getBeer().size(); j++){
-//                System.out.println(bs.get(i).getBeer().get(j));
-//
-//                for(int k = 0; k < bs.get(i).getBeer().get(i).getRawMaterial().size(); k++){
-//                    System.out.println(bs.get(i).getBeer().get(i).getRawMaterial().get(k).getRawMaterial());
-//
-//                }
-//            }
-//
-//        }
-        model.addAttribute("bs", bs);
+        model.addAttribute("beerStyleList", bs);
         return "index";
 	}
 
     @RequestMapping(value="fetchColumnTwo", method = RequestMethod.GET)
     public @ResponseBody
-    List<Beer> fetchColumnTwo(@RequestParam(value="variable") Integer variable){
+    List<Beer> fetchColumnTwo(@RequestParam(value="styleID") Integer styleID){
 
-        System.out.println("CONTROLLER: " + variable);
+        System.out.println("CONTROLLER: " + styleID);
 
+        List<Beer> beerList = beerDAO.findAllBeersByStyle(styleID);
 
-        List<Beer> bisselista = new ArrayList<Beer>();
-
-        Beer kalja1 = new BeerImpl();
-        kalja1.setId(1);
-        kalja1.setName("Olvi");
-        kalja1.setProcess("Olvin process");
-
-        Beer kalja2 = new BeerImpl();
-        kalja2.setId(2);
-        kalja2.setName("Koff");
-        kalja2.setProcess("Koffin process");
-
-        bisselista.add(kalja1);
-        bisselista.add(kalja2);
-
-//        String s = "Response: " + variable;
-        return bisselista;
+        return beerList;
     }
 }

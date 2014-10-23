@@ -20,15 +20,6 @@ public class BeerDAOImpl implements BeerDAO {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Override
-    public List<Beer> findAllBeers(){
-
-        String sql = "SELECT beerID, name, process FROM Beer";
-        RowMapper<Beer> beerRowMapper = new BeerRowMapper();
-        List<Beer> beers = jdbcTemplate.query(sql, beerRowMapper);
-
-        return beers;
-    }
 
     public List<BeerStyle> findAllBeerStyles(){
         String sql = "SELECT styleID, beer_style FROM Beer_style";
@@ -39,19 +30,15 @@ public class BeerDAOImpl implements BeerDAO {
         return beerStyles;
     }
 
-    public Beer findBeer(int id){
-        String sql =
-                "SELECT b.beerID, b.name, b.process, rm.raw_materialID, rm.raw_material\n" +
-                "FROM Beer as b, Beer_raw_material as brm, Raw_material as rm\n" +
-                "WHERE b.beerID=brm.beerID AND brm.raw_materialID=rm.raw_materialID AND b.beerID=?;";
-
-        Object[] parameters = new Object[]{id};
+    public List<Beer> findAllBeersByStyle(int styleID){
+        String sql = "SELECT beerID, name, styleID FROM Beer WHERE styleID = ?";
+        Object[] parameters = new Object[]{styleID};
 
         RowMapper<Beer> beerRowMapper = new BeerRowMapper();
-        List<Beer> b = jdbcTemplate.query(sql, parameters, beerRowMapper);
 
-        Beer beer = b.get(0);
+        List<Beer> beers = jdbcTemplate.query(sql, parameters, beerRowMapper);
 
-        return beer;
+        return beers;
     }
+
 }

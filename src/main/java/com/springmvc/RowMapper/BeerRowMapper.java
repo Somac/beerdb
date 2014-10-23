@@ -13,25 +13,12 @@ import java.sql.SQLException;
 public class BeerRowMapper implements RowMapper<Beer> {
 
     public Beer mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Beer b = null;
 
-        while(rs.next()){
-            if(b==null){
+        Beer b = new BeerImpl();
+        b.setId(rs.getInt("beerID"));
+        b.setName(rs.getString("name"));
+        b.setStyleID(rs.getInt("styleID"));
 
-              b = new BeerImpl();
-
-              b.setId(rs.getInt("beerID"));
-              b.setName(rs.getString("name"));
-              b.setProcess(rs.getString("process"));
-
-            }
-            RawMaterial rm = new RawMaterialImpl();
-            rm.setId(rs.getInt("raw_materialID"));
-            rm.setRawMaterial(rs.getString("raw_material"));
-
-            b.addRawMaterial(rm);
-
-        }
         return b;
     }
 

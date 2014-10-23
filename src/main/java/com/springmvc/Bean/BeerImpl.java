@@ -6,9 +6,9 @@ import java.util.List;
 public class BeerImpl implements Beer{
 
     private int id;
+    private int styleID;
     private String name;
     private String process;
-    private List<RawMaterial> rawMaterial = new ArrayList<RawMaterial>();
 
     public int getId() {
         return id;
@@ -16,6 +16,14 @@ public class BeerImpl implements Beer{
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getStyleID() {
+        return styleID;
+    }
+
+    public void setStyleID(int styleID) {
+        this.styleID = styleID;
     }
 
     public String getName() {
@@ -34,19 +42,5 @@ public class BeerImpl implements Beer{
         this.process = process;
     }
 
-    public List<RawMaterial> getRawMaterial() {
-        return rawMaterial;
-    }
 
-    public void addRawMaterial(RawMaterial rm) {
-        this.rawMaterial.add(rm);
-    }
-
-    @Override
-    public String toString() {
-        return "BeerImpl{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", process='" + process + "}";
-    }
 }

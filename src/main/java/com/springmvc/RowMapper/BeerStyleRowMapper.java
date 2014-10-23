@@ -13,10 +13,10 @@ public class BeerStyleRowMapper implements RowMapper<BeerStyle>{
 
     public BeerStyle mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-        BeerStyle beerStyle = new BeerStyleImpl();
-        beerStyle.setId(rs.getInt("styleID"));
-        beerStyle.setBeerStyle(rs.getString("beer_style"));
-        return beerStyle;
+        BeerStyle bs = new BeerStyleImpl();
+        bs.setId(rs.getInt("styleID"));
+        bs.setBeerStyle(rs.getString("beer_style"));
+        return bs;
     }
 
 }

@@ -15,12 +15,12 @@
     <script>
         $(document).ready(function(){
             $('#columnonelist li').click(function(){
-                var variable = $(this).attr('value');
+                var styleID = $(this).attr('value');
 
                 $.ajax({
                     type: "GET",
                     url: "fetchColumnTwo",
-                    data: "variable=" + variable,
+                    data: "styleID=" + styleID,
                     success: function(response){
                         appendResponseToColumnTwo(response);
                     },
@@ -32,13 +32,13 @@
                 function appendResponseToColumnTwo(response){
                     console.log(response);
 
-                    var menu = $('#menu');
-                    menu.empty();
+                    var columnTwo = $('#columntwolist');
+                    columnTwo.empty();
 
                     for (var i = 0; i < response.length; i++){
                         var output = "";
-                        output +="<li>" + response[i].name+ ", " + response[i].id + "</li>";
-                        menu.append(output);
+                        output +="<li><a href=\"#twittertab\" data-toggle=\"tab\">" + response[i].name + "</a></li>";
+                        columnTwo.append(output);
                     }
                 }
 
@@ -56,7 +56,7 @@
     </jsp:attribute>
 </t:unregistereduser>
 
-<ul id="menu"></ul>
+<%--<ul id="menu"></ul>--%>
 
 <!-- Introduction text -->
 <div class="container">
@@ -77,36 +77,21 @@
     <!-- COLUMN ONE. Menu where beerstyles are listed -->
     <div class="col-md-4">
             <ul id="columnonelist" class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
-                <c:forEach items="${bs}" var="b">
+                <c:forEach items="${beerStyleList}" var="b">
                     <li value="${b.id}"><a href="#" data-toggle="tab">${b.beerStyle} ${b.id}</a></li>
                 </c:forEach>
             </ul>
      </div>
 
-    <%--<!-- COLUMN TWO. Menu where beers are listed by chosen beerstyle -->--%>
-    <%--<div class="col-md-4">--%>
-            <%--<div id="my-tab-content" class="tab-content">--%>
-                <%--<div class="tab-pane active" id="ykkostabi">--%>
-                     <%--<ul class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">--%>
-                             <%--<%--<li><a href="#facebooktab" data-toggle="tab" id="idVar">Facebook</a></li>--%>
-                                 <%--<input type="text" id="idVar"/>--%>
-                                 <%--<input type="button" value="Save" onclick="doAjax();"></button>--%>
-                                 <%--<%--<button type="submit" onclick="doAjax();">Save</button>--%>
-
-                         <%--<li><a href="#instagramtab" data-toggle="tab">Instagram</a></li>--%>
-                         <%--<li><a href="#twittertab" data-toggle="tab">Twitter</a></li>--%>
-                      <%--</ul>--%>
-                <%--</div>--%>
-                <%--<div class="tab-pane" id="kakkostabi">--%>
-                    <%--<h1>Profile</h1>--%>
-                    <%--<p>profile profile profile profile</p>--%>
-                <%--</div>--%>
-                <%--<div class="tab-pane" id="kolmostabi">--%>
-                    <%--<h1>Search</h1>--%>
-                    <%--<p>search search search search</p>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-    <%--</div>--%>
+    <!-- COLUMN TWO. Menu where beers are listed by chosen beerstyle -->
+    <div class="col-md-4">
+            <div id="my-tab-content" class="tab-content">
+                <div class="tab-pane active" id="ykkostabi">
+                     <ul id="columntwolist" class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
+                      </ul>
+                </div>
+            </div>
+    </div>
 
     <%--<!-- COLUMN THREE. All the information about chosen beer -->--%>
     <%--<div class="col-md-4">--%>
