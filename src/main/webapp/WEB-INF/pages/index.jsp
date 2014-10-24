@@ -31,14 +31,15 @@
                 function appendResponseToColumnTwo(response){
                     console.log(response);
 
+                    var columnThree = $('#column-three-content');
+                    columnThree.empty();
+
                     var columnTwo = $('#column-two-list');
                     columnTwo.empty();
 
                     for (var i = 0; i < response.length; i++){
-                        var output = "";
-                        output +="<li value=\"" + response[i].id + "\"><a href=\"#placeholder\" data-toggle=\"tab\">"
-                                + response[i].name + " " + response[i].id + "</a></li>";
-                        columnTwo.append(output);
+                        columnTwo.append("<li value=\"" + response[i].id + "\"><a href=\"#content\" data-toggle=\"tab\">"
+                                + response[i].name + "</a></li>");
                     }
                 }
             });
@@ -57,7 +58,14 @@
                     }
                 })
                 function appendResponseToColumnThree(response){
-                    alert(response);
+                    console.log(response);
+
+                    var columnThree = $('#column-three-content');
+                    columnThree.empty();
+
+                    columnThree.append('<h1>' + response.name + '</h1>' +
+                            '<br><b>Process</b><br><p>' + response.process + '</p>' +
+                            '<br><b>BreweryID</b><br><p>' + response.breweryID + '</p>');
                 }
 
             });
@@ -75,8 +83,6 @@
     </jsp:attribute>
 </t:unregistereduser>
 
-<%--<ul id="menu"></ul>--%>
-
 <!-- Introduction text -->
 <div class="container">
         <div class="jumbotron" style="background: transparent !important;">
@@ -84,9 +90,6 @@
             <p>Free time project for the lulz.</p>
             <p>BeerDB is your database for delicious beers and wonderful brewerys. Search
                 beers below.</p>
-
-            <span></span>
-
         </div>
 </div>
 
@@ -107,7 +110,8 @@
             <div id="my-tab-content" class="tab-content">
                 <div class="tab-pane active">
                      <ul id="column-two-list" class="nav nav-pills nav-stacked" role="tablist" data-tabs="tabs">
-                      </ul>
+                     <!-- Data for li-elements are dynamically listed by appendResponseToColumnTwo (JS method) -->
+                     </ul>
                 </div>
             </div>
     </div>
@@ -115,11 +119,8 @@
     <!-- COLUMN THREE. All the information about chosen beer -->
     <div class="col-md-4">
         <span class="pull-left">
-            <div class="tab-content">
-                <div class="tab-pane" id="content">
-                    <h1>Placeholder</h1>
-                    <p>placeholder placeholder placeholder placeholder </p>
-                </div>
+            <div class="tab-content" id="column-three-content">
+            <!-- Data for this div is dynamically made in appendResponseToColumnThree (JS method) -->
             </div>
         </span>
     </div>
