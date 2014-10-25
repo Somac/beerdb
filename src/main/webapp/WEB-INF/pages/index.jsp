@@ -8,8 +8,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link href="/resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="/resources/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
     <script src="resources/js/mustache.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -120,10 +120,8 @@
 <!-- Introduction text -->
 <div class="container">
         <div class="jumbotron" style="background: transparent !important;">
-            <h1>BeerDB</h1>
-            <p>Free time project for the lulz.</p>
-            <p>BeerDB is your database for delicious beers and wonderful brewerys. Search
-                beers below.</p>
+            <p>BeerDB is your database for delicious beers and wonderful brewerys. Free time project for the lulz.</p>
+            <p>Search beers below.</p>
         </div>
 </div>
 

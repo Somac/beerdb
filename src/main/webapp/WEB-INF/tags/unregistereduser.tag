@@ -8,7 +8,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Database for Beers and Brewerys</a>
+                    <a class="navbar-brand" href="/">Database for Beers and Brewerys</a>
                 </div>
                 <!-- Sign in -->
                 <div id="navbar" class="navbar-collapse collapse">
