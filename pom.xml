@@ -9,6 +9,7 @@
 
     <properties>
         <spring.version>3.2.0.RELEASE</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -91,12 +92,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.4.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.2.4</version>
         </dependency>
 
     </dependencies>

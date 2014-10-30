@@ -3,3 +3,11 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
+#registration-button{
+    float: right;
+}
+
+.dev{
+    border: 1px solid red;
+}

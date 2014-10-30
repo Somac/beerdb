@@ -1,18 +1,11 @@
 package com.springmvc.Controller;
 
-import com.springmvc.Bean.Beer;
-import com.springmvc.Bean.BeerImpl;
-import com.springmvc.Bean.BeerStyle;
-import com.springmvc.Bean.RawMaterial;
+import com.springmvc.Bean.*;
 import com.springmvc.DAO.BeerDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,33 +21,14 @@ public class MainController {
         return "index";
 	}
 
-    @RequestMapping(value="fetchColumnOneData", method = RequestMethod.GET)
-    public @ResponseBody
-    List<BeerStyle> fetchColumnThreeData(){
+    @RequestMapping(value="registration", method = RequestMethod.POST)
+    public String newUser(@ModelAttribute("user") UserImpl user){
 
-        List<BeerStyle> bs = beerDAO.findAllBeerStyles();
+        System.out.println(user.getUsername());
 
-        return bs;
+        return "index";
     }
 
-    @RequestMapping(value="fetchColumnTwoData", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Beer> fetchColumnTwoData(@RequestParam(value="styleID") Integer styleID){
-
-        List<Beer> beerList = beerDAO.findAllBeersByStyle(styleID);
-
-        return beerList;
-    }
-
-
-    @RequestMapping(value="fetchColumnThreeData", method = RequestMethod.GET)
-    public @ResponseBody
-    Beer fetchColumnThreeData(@RequestParam(value="beerID") Integer beerID){
-
-        Beer beer = beerDAO.findBeerByID(beerID);
-
-        return beer;
-    }
 
 //    @RequestMapping(value="testi", method = RequestMethod.GET)
 //    public String testi(){

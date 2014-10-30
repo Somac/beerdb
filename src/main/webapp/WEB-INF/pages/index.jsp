@@ -1,6 +1,7 @@
 <%@page contentType="text/html;charset=UTF-8" language="java"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,8 +86,8 @@
     </div>
 
 
-</div> <!-- row -->
-</div> <!-- container -->
+<%--</div> <!-- row -->--%>
+<%--</div> <!-- container -->--%>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
