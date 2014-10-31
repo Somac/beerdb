@@ -40,19 +40,18 @@
                         <div class="col-lg-6">
                             <form:form id="form-validate" commandName="user" method="POST" action="/registration">
                                 Username:
-                                <input type="text" class="form-control" name="username">
+                                <input type="text" class="form-control" name="username"><br>
                                 Firstname:
-                                <input type="text" class="form-control" name="firstname">
+                                <input type="text" class="form-control" name="firstname"><br>
                                 Lastname:
-                                <input type="text" class="form-control" name="lastname">
+                                <input type="text" class="form-control" name="lastname"><br>
                                 Email:
-                                <input type="text" class="form-control" name="email">
-                                <br>
+                                <input type="text" class="form-control" name="email"><br>
                                 Password:
-                                <input type="text" class="form-control" name="password">
+                                <input type="text" class="form-control" name="password" id="password"><br>
                                 Password:
-                                <input type="text" class="form-control" name="password2">
-                                <br>
+                                <input type="text" class="form-control" name="password2"><br>
+
                                 <button type="submit" class="btn btn-primary">Seivaa!</button>
                             </form:form>
                         </div>
