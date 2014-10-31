@@ -1,5 +1,6 @@
 
 db_connection.properties
+test.jsp
 
 ### Java ###
 *.class
