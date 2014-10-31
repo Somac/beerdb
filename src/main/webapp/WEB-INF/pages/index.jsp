@@ -14,6 +14,7 @@
     <script src="resources/js/mustache.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="resources/js/callajax.js" type="text/javascript"></script>
+    <script src="resources/js/tabhref.js" type="text/javascript"></script>
 
     <!-- MUSTACHE.JS TEMPLATING -->
     <!-- Templating for first column's data -->

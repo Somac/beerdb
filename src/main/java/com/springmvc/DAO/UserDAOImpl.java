@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,8 +17,10 @@ public class UserDAOImpl implements UserDAO{
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Transactional(propagation=Propagation.REQUIRED, isolation=Isolation.READ_COMMITTED, readOnly=false)
     public void saveUser(User user){
         String sql = "INSERT INTO User(username, firstname, lastname, email, password, salt) VALUES (?,?,?,?,?,?)";
+        String sql2 = "INSERT INTO User_authority(userID) VALUES (LAST_INSERT_ID())";
 
         Object[] parameters = new Object[]{
                 user.getUsername(),
@@ -28,6 +33,7 @@ public class UserDAOImpl implements UserDAO{
 
 
         jdbcTemplate.update(sql, parameters);
+        jdbcTemplate.update(sql2);
     }
 
 }

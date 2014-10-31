@@ -1,24 +1,42 @@
 package com.springmvc.Bean;
 
+import javax.validation.constraints.NotNull;
+
+
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
+
+
 
 @Component
 public class UserImpl implements User {
 
     private int userID;
+
+    @NotNull
+    @NotBlank
     private String username;
+
+    @NotNull
+    @NotBlank
     private String firstname;
+
+    @NotNull
+    @NotBlank
     private String lastname;
+
+    @NotNull
+    @NotBlank
     private String email;
+
+    @NotNull
+    @NotBlank
     private String password;
+
     private String salt;
 
     public int getUserID() {
         return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
     }
 
     public String getUsername() {

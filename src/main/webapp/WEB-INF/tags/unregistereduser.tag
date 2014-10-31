@@ -38,7 +38,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="col-lg-6">
-                            <form:form commandName="user" method="POST" action="/registration">
+                            <form:form id="form-validate" commandName="user" method="POST" action="/registration">
                                 Username:
                                 <input type="text" class="form-control" name="username">
                                 Firstname:

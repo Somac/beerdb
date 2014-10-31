@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 public interface User {
 
     public int getUserID();
-    public void setUserID(int userID);
 
     public String getUsername();
     public void setUsername(String username);

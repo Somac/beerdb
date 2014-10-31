@@ -1,6 +1,5 @@
 package com.springmvc.Util;
 
-import com.springmvc.Bean.User;
 import com.springmvc.Bean.UserImpl;
 import org.springframework.stereotype.Service;
 import sun.misc.BASE64Decoder;
@@ -19,14 +18,11 @@ public class PasswordEncrypt {
 
     public UserImpl encryptPassword(UserImpl user) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
-        // Salt generation 64 bits long
+
         byte[] salt = new byte[8];
         random.nextBytes(salt);
-        // Digest computation
-        byte[] hash = getHash(ITERATION_NUMBER, user.getPassword(), salt);
 
-        System.out.println("Hash " + byteToBase64(hash));
-        System.out.println("Salt " + byteToBase64(salt));
+        byte[] hash = getHash(ITERATION_NUMBER, user.getPassword(), salt);
 
         user.setPassword(byteToBase64(hash));
         user.setSalt(byteToBase64(salt));
