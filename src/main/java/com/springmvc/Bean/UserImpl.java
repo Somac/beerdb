@@ -1,5 +1,8 @@
 package com.springmvc.Bean;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserImpl implements User {
 
     private int userID;

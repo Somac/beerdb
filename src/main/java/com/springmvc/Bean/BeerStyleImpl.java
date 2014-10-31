@@ -1,9 +1,12 @@
 package com.springmvc.Bean;
 
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class BeerStyleImpl implements BeerStyle{
 
     private int id;

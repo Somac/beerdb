@@ -1,8 +1,11 @@
 package com.springmvc.Bean;
 
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public interface BeerStyle {
 
     public int getId();

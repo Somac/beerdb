@@ -1,5 +1,8 @@
 package com.springmvc.Bean;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface User {
 
     public int getUserID();

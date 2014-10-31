@@ -1,4 +1,4 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@attribute name="header" fragment="true" %>
 <html>
