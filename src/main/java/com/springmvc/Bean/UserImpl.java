@@ -12,7 +12,7 @@ import java.util.Date;
 @Component
 public class UserImpl implements User {
 
-    private int userID;
+    private int id;
 
     @NotNull
     @NotBlank
@@ -39,11 +39,11 @@ public class UserImpl implements User {
 
 
     public int getUserID() {
-        return userID;
+        return id;
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
+        this.id = userID;
     }
 
     public String getUsername() {

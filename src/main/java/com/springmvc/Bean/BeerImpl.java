@@ -8,8 +8,8 @@ public class BeerImpl implements Beer{
     private int id;
     private String name;
     private String process;
-    private int breweryID;
-    private int styleID;
+    private Brewery brewery;
+    private BeerStyle beerStyle;
     private User user;
 
 
@@ -37,20 +37,20 @@ public class BeerImpl implements Beer{
         this.process = process;
     }
 
-    public int getBreweryID() {
-        return breweryID;
+    public Brewery getBrewery() {
+        return brewery;
     }
 
-    public void setBreweryID(int breweryID) {
-        this.breweryID = breweryID;
+    public void setBrewery(Brewery brewery) {
+        this.brewery = brewery;
     }
 
-    public int getStyleID() {
-        return styleID;
+    public BeerStyle getBeerStyle() {
+        return beerStyle;
     }
 
-    public void setStyleID(int styleID) {
-        this.styleID = styleID;
+    public void setBeerStyle(BeerStyle beerStyle) {
+        this.beerStyle = beerStyle;
     }
 
     public User getUser() {

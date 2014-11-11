@@ -18,7 +18,7 @@ public class UserDAOImpl implements UserDAO{
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @Transactional(propagation=Propagation.REQUIRED, isolation=Isolation.READ_COMMITTED, readOnly=false)
+    @Transactional(isolation=Isolation.READ_COMMITTED, readOnly=false)
     public void saveUser(User user){
         String sql = "INSERT INTO User(username, firstname, lastname, email, password, salt) VALUES (?,?,?,?,?,?)";
         String sql2 = "INSERT INTO User_authority(userID) VALUES (LAST_INSERT_ID())";

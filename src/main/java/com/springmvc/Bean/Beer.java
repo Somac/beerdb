@@ -14,11 +14,11 @@ public interface Beer {
     public String getProcess();
     public void setProcess(String process);
 
-    public int getBreweryID();
-    public void setBreweryID(int breweryID);
+    public Brewery getBrewery();
+    public void setBrewery(Brewery brewery);
 
-    public int getStyleID();
-    public void setStyleID(int styleID);
+    public BeerStyle getBeerStyle();
+    public void setBeerStyle(BeerStyle beerStyle);
 
     public User getUser();
     public void setUser(User user);
