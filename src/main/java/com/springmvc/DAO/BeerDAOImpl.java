@@ -5,6 +5,7 @@ import com.springmvc.Bean.BeerImpl;
 import com.springmvc.Bean.BeerStyle;
 import com.springmvc.RowMapper.BeerRowMapper;
 import com.springmvc.RowMapper.BeerStyleRowMapper;
+import com.springmvc.RowMapper.BeerUploaderBreweryRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -31,7 +32,8 @@ public class BeerDAOImpl implements BeerDAO {
     }
 
     public List<Beer> findAllBeersByStyle(int styleID){
-        String sql = "SELECT beerID, name, process, breweryID, styleID FROM Beer WHERE styleID = ?";
+      String sql = "SELECT beerID, name, process, breweryID, styleID FROM Beer WHERE styleID = ? ORDER BY name";
+
         Object[] parameters = new Object[]{styleID};
 
         RowMapper<Beer> beerRowMapper = new BeerRowMapper();
@@ -41,11 +43,18 @@ public class BeerDAOImpl implements BeerDAO {
         return beers;
     }
 
+
     public Beer findBeerByID(int beerID){
-        String sql = "SELECT beerID, name, process, breweryID, styleID FROM Beer Where beerID = ?";
+        String sql = "SELECT b.beerID, b.name, b.process, b.breweryID, b.styleID, u.userID, u.username, " +
+                        "u.firstname, u.lastname, u.email, u.created " +
+                "FROM Beer as b " +
+                "INNER JOIN User as u " +
+                "ON b.userID = u.userID " +
+                "WHERE b.beerID = ? ORDER BY b.name;";
+
         Object[] parameters = new Object[]{beerID};
 
-        RowMapper<Beer> beerRowMapper = new BeerRowMapper();
+        RowMapper<Beer> beerRowMapper = new BeerUploaderBreweryRowMapper();
 
         Beer beer = jdbcTemplate.queryForObject(sql, parameters, beerRowMapper);
 

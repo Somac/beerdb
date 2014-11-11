@@ -6,10 +6,12 @@ import org.springframework.stereotype.Component;
 public class BeerImpl implements Beer{
 
     private int id;
-    private int styleID;
-    private int breweryID;
     private String name;
     private String process;
+    private int breweryID;
+    private int styleID;
+    private User user;
+
 
     public int getId() {
         return id;
@@ -17,22 +19,6 @@ public class BeerImpl implements Beer{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getStyleID() {
-        return styleID;
-    }
-
-    public void setStyleID(int styleID) {
-        this.styleID = styleID;
-    }
-
-    public int getBreweryID() {
-        return breweryID;
-    }
-
-    public void setBreweryID(int breweryID) {
-        this.breweryID = breweryID;
     }
 
     public String getName() {
@@ -51,5 +37,27 @@ public class BeerImpl implements Beer{
         this.process = process;
     }
 
+    public int getBreweryID() {
+        return breweryID;
+    }
 
+    public void setBreweryID(int breweryID) {
+        this.breweryID = breweryID;
+    }
+
+    public int getStyleID() {
+        return styleID;
+    }
+
+    public void setStyleID(int styleID) {
+        this.styleID = styleID;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

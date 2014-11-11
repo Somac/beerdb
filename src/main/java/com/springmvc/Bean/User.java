@@ -2,10 +2,13 @@ package com.springmvc.Bean;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public interface User {
 
     public int getUserID();
+    public void setUserID(int userID);
 
     public String getUsername();
     public void setUsername(String username);
@@ -24,4 +27,8 @@ public interface User {
 
     public String getSalt();
     public void setSalt(String salt);
+
+    public Date getCreated();
+    public void setCreated(Date created);
+
 }

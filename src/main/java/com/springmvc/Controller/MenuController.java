@@ -25,7 +25,7 @@ public class MenuController {
 
     @RequestMapping(value="fetchColumnOneData", method = RequestMethod.GET)
     public @ResponseBody
-    List<BeerStyle> fetchColumnThreeData(){
+    List<BeerStyle> fetchColumnOneData(){
 
         List<BeerStyle> bs = beerDAO.findAllBeerStyles();
 

@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 
 
 @Component
@@ -34,9 +35,15 @@ public class UserImpl implements User {
     private String password;
 
     private String salt;
+    private Date created;
+
 
     public int getUserID() {
         return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getUsername() {
@@ -85,5 +92,13 @@ public class UserImpl implements User {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }
