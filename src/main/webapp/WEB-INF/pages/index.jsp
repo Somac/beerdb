@@ -22,14 +22,14 @@
     <!-- Templating for first column's data -->
     <script type="text/template" id="template-column-one">
         {{#.}}
-        <li value="{{id}}"><a href="#" data-toggle="tab">{{beerStyle}}</a></li>
+            <li value="{{id}}"><a href="#" data-toggle="tab">{{name}}</a></li>
         {{/.}}
     </script>
 
     <!-- Templating for second column's data -->
     <script type="text/template" id="template-column-two">
         {{#.}}
-        <li value="{{id}}"><a href="{{name}}" data-toggle="tab">{{name}}</a></li>
+            <li value="{{id}}"><a href="{{name}}" data-toggle="tab">{{name}}</a></li>
         {{/.}}
     </script>
 
@@ -41,6 +41,7 @@
         {{#user}}
         <p>Uploaded by {{username}} on {{created}}</p>
         {{/user}}
+        {{brewery.name}}
         <p>Not much to see here yet</p>
     </script>
 </head>

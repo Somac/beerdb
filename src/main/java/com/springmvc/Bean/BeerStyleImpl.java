@@ -10,7 +10,7 @@ import java.util.List;
 public class BeerStyleImpl implements BeerStyle{
 
     private int id;
-    private String beerStyle;
+    private String name;
 
     public int getId() {
         return id;
@@ -19,11 +19,11 @@ public class BeerStyleImpl implements BeerStyle{
         this.id = id;
     }
 
-    public String getBeerStyle() {
-        return beerStyle;
+    public String getName() {
+        return name;
     }
-    public void setBeerStyle(String beerStyle) {
-        this.beerStyle = beerStyle;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

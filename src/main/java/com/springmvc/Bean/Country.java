@@ -6,6 +6,6 @@ public interface Country {
     public void setId(int id);
 
     public String getCountry();
-    public void setCountry(String country);
+    public void setCountry(String name);
 
 }

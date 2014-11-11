@@ -3,7 +3,7 @@ package com.springmvc.Bean;
 public class CountryImpl implements Country{
 
     private int id;
-    private String country;
+    private String name;
 
     public int getId() {
         return id;
@@ -14,10 +14,10 @@ public class CountryImpl implements Country{
     }
 
     public String getCountry() {
-        return country;
+        return name;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCountry(String name) {
+        this.name = name;
     }
 }

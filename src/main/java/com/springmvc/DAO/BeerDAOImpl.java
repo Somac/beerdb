@@ -44,12 +44,15 @@ public class BeerDAOImpl implements BeerDAO {
     }
 
 
-    public Beer findBeerByID(int beerID){
-        String sql = "SELECT b.beerID, b.name, b.process, b.breweryID, b.styleID, u.userID, u.username, " +
-                        "u.firstname, u.lastname, u.email, u.created " +
-                "FROM Beer as b " +
+    public Beer findBeerBreweryUploaderByID(int beerID){
+        String sql = "SELECT b.beerID, b.name, b.process, bre.breweryID, bre.brewery_name, c.countryID, c.country, u.userID, u.username, u.firstname, u.lastname, u.email, u.created \n" +
+                "FROM Beer as b \n" +
                 "INNER JOIN User as u " +
+                "INNER JOIN Brewery as bre " +
+                "INNER JOIN Country as c\n" +
                 "ON b.userID = u.userID " +
+                "AND b.breweryID = bre.breweryID " +
+                "AND bre.countryID = c.countryID\n" +
                 "WHERE b.beerID = ? ORDER BY b.name;";
 
         Object[] parameters = new Object[]{beerID};

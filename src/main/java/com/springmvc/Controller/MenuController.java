@@ -46,7 +46,7 @@ public class MenuController {
     public @ResponseBody
     Beer fetchColumnThreeData(@RequestParam(value="beerID") Integer beerID){
 
-        Beer beer = beerDAO.findBeerByID(beerID);
+        Beer beer = beerDAO.findBeerBreweryUploaderByID(beerID);
 
         return beer;
     }

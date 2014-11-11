@@ -3,7 +3,7 @@ package com.springmvc.Bean;
 public class BreweryImpl implements Brewery{
 
     private int id;
-    private String brewery;
+    private String name;
     private Country country;
 
     public int getId() {
@@ -14,12 +14,12 @@ public class BreweryImpl implements Brewery{
         this.id = id;
     }
 
-    public String getBrewery() {
-        return brewery;
+    public String getName() {
+        return name;
     }
 
-    public void setBrewery(String brewery) {
-        this.brewery = brewery;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Country getCountry() {
