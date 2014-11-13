@@ -5,6 +5,8 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 This RowMapper is only used by BeerDAO.findBeerBreweryUploaderByID for gathering data to menu's column three
@@ -24,6 +26,16 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
             brewery.setId(rs.getInt("breweryID"));
             brewery.setName(rs.getString("brewery_name"));
 
+            //Actual deliverable package (price) of the beer
+            BeerPackage beerPackage = new BeerPackageImpl();
+            beerPackage.setId(rs.getInt("beer_packageID"));
+            beerPackage.setPrice(rs.getDouble("price"));
+
+            //Packaging (size) of the beer
+            Packaging packaging = new PackagingImpl();
+            packaging.setPackageID(rs.getInt("packageID"));
+            packaging.setSize(rs.getDouble("size"));
+
             //Home country of brewery
             Country country = new CountryImpl();
             country.setId(rs.getInt("countryID"));
@@ -40,7 +52,9 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
 
             //Sub-objects to Beer object
             brewery.setCountry(country);
+            beerPackage.setPackaging(packaging);
 
+            beer.setBeerPackage(beerPackage);
             beer.setBrewery(brewery);
             beer.setUser(uploader);
 

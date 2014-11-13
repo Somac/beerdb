@@ -41,7 +41,18 @@
         {{#user}}
         <p>Uploaded by {{username}} on {{created}}</p>
         {{/user}}
-        {{brewery.name}}
+        {{#brewery}}
+            {{name}}
+                {{#country}}
+                    {{country}}
+                {{/country}}
+        {{/brewery}}
+        {{#beerPackage}}
+                {{price}}
+                {{#packaging}}
+                    {{size}}
+                {{/packaging}}
+        {{/beerPackage}}
         <p>Not much to see here yet</p>
     </script>
 </head>

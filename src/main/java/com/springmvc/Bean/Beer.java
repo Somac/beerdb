@@ -2,6 +2,8 @@ package com.springmvc.Bean;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface Beer {
 
@@ -22,6 +24,12 @@ public interface Beer {
 
     public User getUser();
     public void setUser(User user);
+
+    public BeerPackage getBeerPackage();
+    public void setBeerPackage(BeerPackage beerPackage);
+
+//    public List<BeerRawMaterial> getBeerRawMaterialList();
+//    public void setBeerRawMaterialList(List<BeerRawMaterial> beerRawMaterialList);
 
 }
 
