@@ -7,29 +7,29 @@ import java.util.List;
 @Service
 public interface Beer {
 
-    public int getId();
-    public void setId(int id);
+    int getId();
+    void setId(int id);
 
-    public String getName();
-    public void setName(String name);
+    String getName();
+    void setName(String name);
 
-    public String getProcess();
-    public void setProcess(String process);
+    String getProcess();
+    void setProcess(String process);
 
-    public Brewery getBrewery();
-    public void setBrewery(Brewery brewery);
+    Brewery getBrewery();
+    void setBrewery(Brewery brewery);
 
-    public BeerStyle getBeerStyle();
-    public void setBeerStyle(BeerStyle beerStyle);
+    BeerStyle getBeerStyle();
+    void setBeerStyle(BeerStyle beerStyle);
 
-    public User getUser();
-    public void setUser(User user);
+    User getUser();
+    void setUser(User user);
 
-    public BeerPackage getBeerPackage();
-    public void setBeerPackage(BeerPackage beerPackage);
+    BeerPackage getBeerPackage();
+    void setBeerPackage(BeerPackage beerPackage);
 
-//    public List<BeerRawMaterial> getBeerRawMaterialList();
-//    public void setBeerRawMaterialList(List<BeerRawMaterial> beerRawMaterialList);
+    List<BeerRawMaterial> getBeerRawMaterialList();
+    void setBeerRawMaterialList(List<BeerRawMaterial> beerRawMaterialList);
 
 }
 

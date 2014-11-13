@@ -45,19 +45,27 @@ public class BeerDAOImpl implements BeerDAO {
 
 
     public Beer findBeerBreweryUploaderByID(int beerID){
-        String sql = "SELECT b.beerID, b.name, b.process, bre.breweryID, bre.brewery_name, c.countryID, c.country, u.userID, u.username, u.firstname, u.lastname, u.email, u.created, bp.beer_packageID, bp.price, p.packageID, p.size\n" +
+        String sql = "SELECT b.beerID, b.name, b.process, bre.breweryID, bre.brewery_name, c.countryID, c.country, " +
+                "u.userID, u.username, u.firstname, u.lastname, u.email, u.created, bp.beer_packageID, bp.price, " +
+                "p.packageID, p.size, brm.beer_raw_materialID, \n" +
+                "brm.amount, rm.raw_material\n" +
                 "FROM Beer as b \n" +
                 "INNER JOIN User as u " +
                 "INNER JOIN Brewery as bre " +
                 "INNER JOIN Country as c " +
                 "INNER JOIN Beer_package as bp " +
-                "INNER JOIN Package as p\n" +
+                "INNER JOIN Package as p " +
+                "INNER JOIN Beer_raw_material as brm " +
+                "INNER JOIN Raw_material as rm\n" +
                 "ON b.userID = u.userID " +
                 "AND b.breweryID = bre.breweryID " +
                 "AND bre.countryID = c.countryID " +
                 "AND b.beerID = bp.beerID " +
-                "AND bp.packageID = p.packageID\n" +
-                "WHERE b.beerID = ? ORDER BY b.name;";
+                "AND bp.packageID = p.packageID " +
+                "AND b.beerID = brm.beerID " +
+                "AND brm.raw_materialID = rm.raw_materialID\n" +
+                "WHERE b.beerID = ? " +
+                "ORDER BY b.name;";
 
         Object[] parameters = new Object[]{beerID};
 

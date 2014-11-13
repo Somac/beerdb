@@ -2,6 +2,7 @@ package com.springmvc.Bean;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -14,7 +15,7 @@ public class BeerImpl implements Beer{
     private BeerStyle beerStyle;
     private User user;
     private BeerPackage beerPackage;
-//    private List<BeerRawMaterial> beerRawMaterialList;
+    private List<BeerRawMaterial> beerRawMaterialList;
 
 
     public int getId() {
@@ -73,11 +74,11 @@ public class BeerImpl implements Beer{
         this.beerPackage = beerPackage;
     }
 
-//    public List<BeerRawMaterial> getBeerRawMaterialList() {
-//        return beerRawMaterialList;
-//    }
-//
-//    public void setBeerRawMaterialList(List<BeerRawMaterial> beerRawMaterialList) {
-//        this.beerRawMaterialList = beerRawMaterialList;
-//    }
+    public List<BeerRawMaterial> getBeerRawMaterialList() {
+        return beerRawMaterialList;
+    }
+
+    public void setBeerRawMaterialList(List<BeerRawMaterial> beerRawMaterialList) {
+        this.beerRawMaterialList = beerRawMaterialList;
+    }
 }

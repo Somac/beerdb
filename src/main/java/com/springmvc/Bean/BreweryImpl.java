@@ -4,7 +4,7 @@ public class BreweryImpl implements Brewery{
 
     private int id;
     private String name;
-    private Country country;
+    private String country;
 
     public int getId() {
         return id;
@@ -22,11 +22,11 @@ public class BreweryImpl implements Brewery{
         this.name = name;
     }
 
-    public Country getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 }

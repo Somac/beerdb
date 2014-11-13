@@ -7,28 +7,28 @@ import java.util.Date;
 @Service
 public interface User {
 
-    public int getUserID();
-    public void setUserID(int userID);
+    int getUserID();
+    void setUserID(int userID);
 
-    public String getUsername();
-    public void setUsername(String username);
+    String getUsername();
+    void setUsername(String username);
 
-    public String getFirstname();
-    public void setFirstname(String firstname);
+    String getFirstname();
+    void setFirstname(String firstname);
 
-    public String getLastname();
-    public void setLastname(String lastname);
+    String getLastname();
+    void setLastname(String lastname);
 
-    public String getEmail();
-    public void setEmail(String email);
+    String getEmail();
+    void setEmail(String email);
 
-    public String getPassword();
-    public void setPassword(String password);
+    String getPassword();
+    void setPassword(String password);
 
-    public String getSalt();
-    public void setSalt(String salt);
+    String getSalt();
+    void setSalt(String salt);
 
-    public Date getCreated();
-    public void setCreated(Date created);
+    Date getCreated();
+    void setCreated(Date created);
 
 }

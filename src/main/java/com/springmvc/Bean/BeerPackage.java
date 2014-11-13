@@ -1,13 +1,17 @@
 package com.springmvc.Bean;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface BeerPackage {
+
     int getId();
     void setId(int id);
 
     double getPrice();
     void setPrice(double price);
 
-    Packaging getPackaging();
-    void setPackaging(Packaging packaging);
+    double getSize();
+    public void setSize(double size);
 
 }

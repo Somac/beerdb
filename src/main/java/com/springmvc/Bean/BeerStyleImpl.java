@@ -15,6 +15,7 @@ public class BeerStyleImpl implements BeerStyle{
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -22,6 +23,7 @@ public class BeerStyleImpl implements BeerStyle{
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }

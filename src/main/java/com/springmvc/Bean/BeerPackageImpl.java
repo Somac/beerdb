@@ -1,37 +1,35 @@
 package com.springmvc.Bean;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class BeerPackageImpl implements BeerPackage {
 
     private int id;
     private double price;
-    private Packaging packaging;
+    private double size;
 
-    @Override
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
 
-    @Override
     public double getPrice() {
         return price;
     }
 
-    @Override
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public Packaging getPackaging() {
-        return packaging;
+    public double getSize() {
+        return size;
     }
 
-    public void setPackaging(Packaging packaging) {
-        this.packaging = packaging;
+    public void setSize(double size) {
+        this.size = size;
     }
 }
