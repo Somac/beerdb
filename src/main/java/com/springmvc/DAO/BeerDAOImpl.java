@@ -32,7 +32,7 @@ public class BeerDAOImpl implements BeerDAO {
     }
 
     public List<Beer> findAllBeersByStyle(int styleID){
-      String sql = "SELECT beerID, name, process, breweryID, styleID FROM Beer WHERE styleID = ? ORDER BY name";
+      String sql = "SELECT beerID, name, breweryID, styleID FROM Beer WHERE styleID = ? ORDER BY name";
 
         Object[] parameters = new Object[]{styleID};
 
@@ -45,7 +45,7 @@ public class BeerDAOImpl implements BeerDAO {
 
 
     public Beer findBeerBreweryUploaderByID(int beerID){
-        String sql = "SELECT b.beerID, b.name, b.process, bre.breweryID, bre.brewery_name, c.countryID, c.country, " +
+        String sql = "SELECT b.beerID, b.name, b.description, b.alcohol, bre.breweryID, bre.brewery_name, c.countryID, c.country, " +
                 "u.userID, u.username, u.firstname, u.lastname, u.email, u.created, bp.beer_packageID, bp.price, " +
                 "p.packageID, p.size, brm.beer_raw_materialID, \n" +
                 "brm.amount, rm.raw_material\n" +

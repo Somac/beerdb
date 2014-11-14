@@ -13,5 +13,4 @@ public interface BeerPackage {
 
     double getSize();
     public void setSize(double size);
-
 }

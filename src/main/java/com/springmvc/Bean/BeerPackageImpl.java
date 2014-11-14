@@ -32,4 +32,5 @@ public class BeerPackageImpl implements BeerPackage {
     public void setSize(double size) {
         this.size = size;
     }
+
 }

@@ -13,8 +13,11 @@ public interface Beer {
     String getName();
     void setName(String name);
 
-    String getProcess();
-    void setProcess(String process);
+    String getDescription();
+    void setDescription(String description);
+
+    double getAlcohol();
+    void setAlcohol(double alcohol);
 
     Brewery getBrewery();
     void setBrewery(Brewery brewery);

@@ -36,24 +36,28 @@
     <!-- Templating for third column's data -->
     <script type="text/template" id="template-column-three">
         <h1 align="center">{{name}}</h1>
+        {{#beerPackage}}
+        <div>{{price}} euros, {{size}}l</div>
+        {{/beerPackage}}
         <br>
-        <p>Process: {{process}}</p>
+        <p>Description: {{description}}</p>
+        <p>Alcohol: {{alcohol}}%</p>
+        {{#brewery}}
+        <p>Brewery: {{name}}, {{country}}</p>
+        {{/brewery}}
+        Ingredients:
+        {{#beerRawMaterialList}}
+        <ol>
+            {{#.}}
+             <li>{{rawMaterial}}</li>
+            {{/.}}
+        </ol>
+        {{/beerRawMaterialList}}
+
         {{#user}}
         <p>Uploaded by {{username}} on {{created}}</p>
         {{/user}}
-        {{#brewery}}
-            {{name}}
-                {{#country}}
-                    {{country}}
-                {{/country}}
-        {{/brewery}}
-        {{#beerPackage}}
-                {{price}}
-                {{#packaging}}
-                    {{size}}
-                {{/packaging}}
-        {{/beerPackage}}
-        <p>Not much to see here yet</p>
+        <br>
     </script>
 </head>
 

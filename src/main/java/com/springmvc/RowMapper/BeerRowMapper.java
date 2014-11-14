@@ -14,7 +14,6 @@ public class BeerRowMapper implements RowMapper<Beer> {
         Beer b = new BeerImpl();
         b.setId(rs.getInt("beerID"));
         b.setName(rs.getString("name"));
-        b.setProcess(rs.getString("process"));
 
         Brewery brewery = new BreweryImpl();
         brewery.setId(rs.getInt("breweryID"));

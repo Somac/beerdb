@@ -10,7 +10,8 @@ public class BeerImpl implements Beer{
 
     private int id;
     private String name;
-    private String process;
+    private String description;
+    private double alcohol;
     private Brewery brewery;
     private BeerStyle beerStyle;
     private User user;
@@ -34,12 +35,20 @@ public class BeerImpl implements Beer{
         this.name = name;
     }
 
-    public String getProcess() {
-        return process;
+    public String getDescription() {
+        return description;
     }
 
-    public void setProcess(String process) {
-        this.process = process;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getAlcohol() {
+        return alcohol;
+    }
+
+    public void setAlcohol(double alcohol) {
+        this.alcohol = alcohol;
     }
 
     public Brewery getBrewery() {
