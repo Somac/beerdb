@@ -46,7 +46,7 @@ public class MainController {
 //            return "/registration";
 //        }
 
-        user = encryption.encryptPassword(user);
+/*        user = encryption.encryptPassword(user);*/
 
         userDAO.saveUser(user);
 

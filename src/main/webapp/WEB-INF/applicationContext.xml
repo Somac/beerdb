@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	    http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context.xsd
+	    http://www.springframework.org/schema/security
+	    http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <!-- Configures and scans annotations -->
+    <mvc:annotation-driven />
+    <context:component-scan base-package="com.springmvc"/>
+
+    <!-- View resolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!-- Data source for JDBC -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <context:property-placeholder location="classpath*:db_connection.properties"/>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${db.driver}" />
+        <property name="url" value="${db.url}" />
+        <property name="username" value="${db.username}" />
+        <property name="password" value="${db.password}" />
+        <property name="initialSize" value="1" />
+        <property name="maxActive" value="5" />
+        
+    </bean>
+
+    <sec:http auto-config="true" use-expressions="true">
+
+    <sec:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+    <sec:intercept-url pattern="/registered/*" access="isAuthenticated()" />
+    <sec:intercept-url pattern="/*" access="permitAll" />
+
+    <sec:form-login
+            login-page="/loginpage"
+            default-target-url="/registered/main"
+            authentication-failure-url="/loginfail" />
+
+        <sec:logout logout-success-url="/logout" />
+
+    </sec:http>
+
+    <bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+
+    <sec:authentication-manager>
+        <sec:authentication-provider>
+            <sec:password-encoder ref="encoder" />
+            <sec:jdbc-user-service data-source-ref="dataSource"
+                                   users-by-username-query="SELECT username, password, enabled FROM User WHERE username=? and enabled = 1"
+                                   authorities-by-username-query="
+                                   SELECT u.username, a.role
+                                   FROM User u JOIN User_authority ua
+                                   ON (u.userID = ua.userID)
+                                   JOIN Authority a
+                                   ON (a.authorityID = ua.authorityID)
+                                   WHERE u.username = ?" />
+        </sec:authentication-provider>
+    </sec:authentication-manager>
+
+    <sec:global-method-security pre-post-annotations="enabled" />
+
+</beans>
