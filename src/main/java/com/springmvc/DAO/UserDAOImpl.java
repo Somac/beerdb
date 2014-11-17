@@ -20,16 +20,15 @@ public class UserDAOImpl implements UserDAO{
 
     @Transactional(isolation=Isolation.READ_COMMITTED, readOnly=false)
     public void saveUser(User user){
-        String sql = "INSERT INTO User(username, firstname, lastname, email, password, salt) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO User(username, password, firstname, lastname, email) VALUES (?,?,?,?,?)";
         String sql2 = "INSERT INTO User_authority(userID) VALUES (LAST_INSERT_ID())";
 
         Object[] parameters = new Object[]{
                 user.getUsername(),
+                user.getPassword(),
                 user.getFirstname(),
                 user.getLastname(),
-                user.getEmail(),
-                user.getPassword(),
-                user.getSalt()
+                user.getEmail()
         };
 
 

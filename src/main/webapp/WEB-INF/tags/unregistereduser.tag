@@ -19,7 +19,7 @@
                 </div>
                 <!-- Navigation bar -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#" id="open-sign-up-modal">Sign Up</a>
                         </li>
@@ -41,19 +41,24 @@
                     </div>
                     <div class="modal-body">
                         <div class="col-lg-6">
-                            <form:form id="validate-form" commandName="user" method="POST" action="/registration">
+                            <form:form id="validate-form" modelAttribute="user" method="POST" action="/signup">
                                 Username:
-                                <input type="text" class="form-control" name="username">
+                                <form:input path="username" class="form-control"/>
+                                <form:errors path="username"/>
                                 Firstname:
-                                <input type="text" class="form-control" name="firstname">
+                                <form:input path="firstname" class="form-control"/>
+                                <form:errors path="firstname"/>
                                 Lastname:
-                                <input type="text" class="form-control" name="lastname">
+                                <form:input path="lastname" class="form-control"/>
+                                <form:errors path="lastname"/>
                                 Email:
-                                <input type="text" class="form-control" name="email">
+                                <form:input path="email" class="form-control"/>
+                                <form:errors path="email"/>
                                 Password:
-                                <input type="password" class="form-control" name="password" id="password">
+                                <form:input path="password" type="password" class="form-control" id="password"/>
+                                <form:errors path="password"/>
                                 Password:
-                                <input type="password" class="form-control" name="password2">
+                                <input name="password2" type="password" class="form-control"/>
 
                                 <button type="submit" class="btn btn-primary">Seivaa!</button>
                             </form:form>
@@ -80,14 +85,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="col-lg-6">
-                            <form:form action="#">
+                            <form action="j_spring_security_check" method="POST">
                                 Username:
-                                <input type="text" class="form-control" name="username">
+                                <input type="text" class="form-control" name="j_username">
                                 Password:
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="j_password">
 
                                 <button type="submit" class="btn btn-primary">Go!</button>
-                            </form:form>
+                            </form>
                         </div>
                         <div class="col-lg-6">
                             <!-- prerendered text, username validation? -->

@@ -81,13 +81,9 @@
         </div>
     </div>
 
-    <form action="/loginpage" method="GET">
-        <button type="submit">Login page</button>
-    </form>
-
-    <form action="/secure/admin" method="GET">
-        <button type="submit">Admin page</button>
-    </form>
+    <%--<form action="/secure/admin" method="GET">--%>
+        <%--<button type="submit">Admin page</button>--%>
+    <%--</form>--%>
 
     <div class="row">
         <div class="menu">
@@ -131,8 +127,6 @@
         </div>
     </div>
 </div>
-
-
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>

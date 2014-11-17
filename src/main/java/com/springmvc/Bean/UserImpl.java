@@ -20,84 +20,96 @@ public class UserImpl implements User {
 
     @NotNull
     @NotBlank
+    private String password;
+
+    private boolean enabled;
+
     private String firstname;
 
-    @NotNull
-    @NotBlank
     private String lastname;
 
     @NotNull
-    @NotBlank
+    @NotBlank(message = "cannot be blanko")
     private String email;
 
-    @NotNull
-    @NotBlank
-    private String password;
-
-    private String salt;
     private Date created;
 
-
-    public int getUserID() {
+    @Override
+    public int getId() {
         return id;
     }
 
-    public void setUserID(int userID) {
-        this.id = userID;
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
 
+    @Override
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    @Override
     public String getPassword() {
         return password;
     }
 
+    @Override
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getSalt() {
-        return salt;
+    @Override
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
+    @Override
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
+    @Override
+    public String getFirstname() {
+        return firstname;
+    }
+
+    @Override
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    @Override
+    public String getLastname() {
+        return lastname;
+    }
+
+    @Override
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    @Override
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
     public Date getCreated() {
         return created;
     }
 
+    @Override
     public void setCreated(Date created) {
         this.created = created;
     }

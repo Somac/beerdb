@@ -12,6 +12,7 @@ $('#reset-form').click(function(){
     var form = $('#validate-form').validate();
     form.resetForm();
 
-    });
+});
+
 });
 

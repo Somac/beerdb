@@ -41,7 +41,7 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
 
                     //Uploader of the beer
                     User uploader = new UserImpl();
-                    uploader.setUserID(rs.getInt("userID"));
+                    uploader.setId(rs.getInt("userID"));
                     uploader.setUsername(rs.getString("username"));
                     uploader.setFirstname(rs.getString("firstname"));
                     uploader.setLastname(rs.getString("lastname"));
