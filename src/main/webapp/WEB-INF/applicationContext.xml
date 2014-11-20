@@ -42,7 +42,6 @@
         <property name="password" value="${db.password}" />
         <property name="initialSize" value="1" />
         <property name="maxActive" value="5" />
-        
     </bean>
 
     <sec:http auto-config="true" use-expressions="true">
@@ -60,7 +59,7 @@
 
     </sec:http>
 
-    <bean id="encoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+    <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
     <sec:authentication-manager>
         <sec:authentication-provider>

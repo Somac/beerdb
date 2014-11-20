@@ -1,10 +1,10 @@
 package com.springmvc.Controller;
 
-import com.springmvc.Bean.User;
 import com.springmvc.Bean.UserImpl;
-import com.springmvc.DAO.BeerDAO;
 import com.springmvc.DAO.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 
 
 @Controller
@@ -24,8 +22,9 @@ public class LoginController {
     @Autowired
     private UserDAO userDAO;
 
-//    @Autowired
-//    private BeerDAO beerDAO;
+    @Autowired
+    @Qualifier("encoder")
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping(method = RequestMethod.GET)
 	public String showIndexPage(Model model){
@@ -37,15 +36,13 @@ public class LoginController {
 
 
     @RequestMapping(value="signup", method = RequestMethod.POST)
-    public String signupSubmit(@Valid @ModelAttribute("user") UserImpl user, BindingResult bindingResult)
-            throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    public String signupSubmit(@Valid @ModelAttribute("user") UserImpl user, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
             return "index";
         }
 
-/*        user = encryption.encryptPassword(user);*/
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.saveUser(user);
 
         return "redirect:/";
@@ -53,7 +50,9 @@ public class LoginController {
 
 
     @RequestMapping(value="loginfail", method = RequestMethod.GET)
-    public String loginError() {
+    public String loginError(Model model) {
+
+        model.addAttribute("user", new UserImpl());
 
         //model, "ei onnistunut"
         return "index";
