@@ -112,76 +112,100 @@
     </div>
 </nav>
 
-<!-- SIGN UP pop-up -->
+<!-- SIGN UP MODAL -->
 <div class="modal" id="sign-up-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" id="reset-form" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">SIGN UP</h4>
-            </div>
-            <div class="modal-body">
-                <div class="col-lg-6">
-                    <form:form id="validate-form" modelAttribute="user" method="POST" action="${context}/signup">
-                        Username:
-                        <form:input path="username" class="form-control"/>
-                        <form:errors path="username"/>
-                        Firstname:
-                        <form:input path="firstname" class="form-control"/>
-                        <form:errors path="firstname"/>
-                        Lastname:
-                        <form:input path="lastname" class="form-control"/>
-                        <form:errors path="lastname"/>
-                        Email:
-                        <form:input path="email" class="form-control"/>
-                        <form:errors path="email"/>
-                        Password:
-                        <form:input path="password" type="password" class="form-control" id="password"/>
-                        <form:errors path="password"/>
-                        Password:
-                        <input name="password2" type="password" class="form-control"/>
-                        <button type="submit" class="btn btn-primary">Seivaa!</button>
+        <div class="loginbox" class="mainbox col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info" >
+                <!-- Modal head -->
+                <div class="panel-heading">
+                    <div class="panel-title">Sign Up</div>
+                    <button type="button" class="close login-close-button" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <!-- Modal body -->
+                <div class="login-panel-body panel-body">
+                     <form:form id="validate-form" modelAttribute="user" method="POST" action="${context}/signup"
+                           class="form-horizontal" role="form">
+                        <!-- Username -->
+                        <div class="input-group login-input-group">
+                            <span class="input-group-addon"></span>
+                            <form:input path="username" class="form-control" placeholder="username"/>
+                        </div>
+
+                         <!-- Firstname -->
+                         <div class="input-group login-input-group">
+                             <span class="input-group-addon"></span>
+                             <form:input path="firstname" class="form-control" placeholder="firstname"/>
+                         </div>
+
+                         <!-- Lastname -->
+                         <div class="input-group login-input-group">
+                             <span class="input-group-addon"></span>
+                             <form:input path="lastname" class="form-control" placeholder="lastname"/>
+                         </div>
+
+                         <!-- Email -->
+                         <div class="input-group login-input-group">
+                             <span class="input-group-addon"></span>
+                             <form:input path="email" class="form-control" placeholder="email"/>
+                         </div>
+
+                         <!-- Password -->
+                         <div class="input-group login-input-group">
+                             <span class="input-group-addon"></span>
+                             <form:input path="password" type="password" class="form-control" placeholder="password" id="password"/>
+                         </div>
+
+                         <!-- Password -->
+                         <div class="input-group login-input-group">
+                             <span class="input-group-addon"></span>
+                             <input name="password2" type="password" class="form-control" placeholder="password"/>
+                         </div>
+
+                        <div class="login-form-group form-group">
+                            <div class="col-sm-12 controls">
+                                <button type="submit" class="btn btn-success">Sign Up</button>
+                            </div>
+                        </div>
                     </form:form>
-                </div>
-                <div class="col-lg-6">
-                    <!-- prerendered text, username validation? -->
-                </div>
-                <div class="modal-footer">
-                    <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
-                    <%--<button type="submit" class="btn btn-primary">Save changes</button>--%>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- SIGN IN pop-up -->
+<!-- SIGN IN MODAL -->
 <div class="modal" id="sign-in-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div id="loginbox" class="mainbox col-sm-8 col-sm-offset-2">
             <div class="panel panel-info" >
+                <!-- Modal head -->
                 <div class="panel-heading">
                     <div class="panel-title">Sign In</div>
                     <button type="button" class="close login-close-button" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 </div>
-
+                <!-- Modal body -->
                 <div id="login-panel-body" class="panel-body" >
-
                     <form action="j_spring_security_check" method="POST" id="loginform" class="form-horizontal" role="form" >
+                        <!-- Username -->
                         <div class="input-group login-input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                             <input id="login-username" type="text" class="form-control" name="j_username" placeholder="username">
                         </div>
 
+                        <!-- Password -->
                         <div class="input-group login-input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                             <input id="login-password" type="password" class="form-control" name="j_password" placeholder="password">
                         </div>
 
+                        <!-- If there is errors during login (wrong username/password, username already exists) -->
                         <div class="error"><c:out value="${loginError}"/></div>
 
-                        <div id="login-form-group" class="form-group">
+                        <div id="login-form-group form-group">
                             <div class="col-sm-12 controls">
                                 <button type="submit" class="btn btn-success">Login</button>
                             </div>

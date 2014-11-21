@@ -11,8 +11,12 @@ $(document).ready(function(){
 
     });
 
-    <!-- When link (some beerstyle) have been clicked in column 1. it triggers AJAX call below -->
-    <!-- and generates content to the second menu and presents it via it's own template. -->
+
+    /*
+    * When link (some beerstyle) have been clicked in column 1. it triggers AJAX call below
+    * and generates content to the second menu and presents it via it's own template.
+    */
+
     $('#column-one-content').on('click','li', function(){
         var styleID = $(this).attr('value');
 
@@ -40,8 +44,12 @@ $(document).ready(function(){
         }
     });
 
-    <!-- When link (some beer) have been clicked in column 2. it triggers AJAX call below and generates content -->
-    <!-- to the third menu and presents it via it's own template. -->
+
+    /*
+     * When link (some beer) have been clicked in column 2. it triggers AJAX call below and generates content
+     * to the third menu and presents it via it's own template.
+     */
+
     $('#column-two-content').on('click', 'li', function(){
         var beerID = $(this).attr('value')
 

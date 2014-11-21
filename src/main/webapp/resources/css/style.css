@@ -30,7 +30,7 @@ body {
 }
 
 
-#loginbox{
+.loginbox{
     margin-top:50px;
 }
 
@@ -40,7 +40,7 @@ body {
     top:-25px;
 }
 
-#login-panel-body{
+.login-panel-body{
     padding-top:30px;
 }
 
@@ -48,7 +48,7 @@ body {
     margin-bottom:25px;
 }
 
-#login-form-group{
+.login-form-group{
     margin-top:10px;
 }
 

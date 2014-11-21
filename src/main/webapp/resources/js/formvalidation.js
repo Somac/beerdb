@@ -8,13 +8,13 @@ $(document).ready(function(){
               required: true,
               minlength: 3
             },
-            password: {
-               required: true,
-               minlength: 5
-            },
             email: {
                 required: true,
                 email: true
+            },
+            password: {
+               required: true,
+               minlength: 5
             },
             password2: {
                required: true,
