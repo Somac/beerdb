@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-$('#open-sign-up-modal').click(function(){
+$('.open-sign-up-modal').click(function(){
     $('#sign-up-modal').modal('show');
 });
 

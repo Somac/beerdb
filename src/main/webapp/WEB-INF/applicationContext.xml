@@ -15,6 +15,7 @@
 	    http://www.springframework.org/schema/security/spring-security.xsd">
 
     <mvc:resources mapping="/resources/**" location="/resources/" />
+    <sec:http pattern="/resources/**" security="none" />
 
     <!-- Configures and scans annotations -->
     <mvc:annotation-driven />
@@ -51,11 +52,11 @@
     <sec:intercept-url pattern="/*" access="permitAll" />
 
     <sec:form-login
-            login-page="/loginpage"
+            login-page="/"
             default-target-url="/registered/main"
             authentication-failure-url="/loginfail" />
 
-        <sec:logout logout-success-url="/logout" />
+        <sec:logout logout-url="/logout"/>
 
     </sec:http>
 
@@ -65,7 +66,8 @@
         <sec:authentication-provider>
             <sec:password-encoder ref="encoder" />
             <sec:jdbc-user-service data-source-ref="dataSource"
-                                   users-by-username-query="SELECT username, password, enabled FROM User WHERE username=? and enabled = 1"
+                                   users-by-username-query="SELECT username, password, enabled
+                                   FROM User WHERE username=? and enabled = 1"
                                    authorities-by-username-query="
                                    SELECT u.username, a.role
                                    FROM User u JOIN User_authority ua

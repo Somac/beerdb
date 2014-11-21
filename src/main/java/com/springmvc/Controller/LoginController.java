@@ -51,7 +51,6 @@ public class LoginController {
 
     @RequestMapping(value="loginfail", method = RequestMethod.GET)
     public String loginError(Model model) {
-
         model.addAttribute("user", new UserImpl());
 
         //model, "ei onnistunut"
@@ -60,6 +59,7 @@ public class LoginController {
 
     @RequestMapping(value="logout", method = RequestMethod.GET)
     public String logout(Model model) {
+        model.addAttribute("user", new UserImpl());
 
         //model, "olet kirjautunut ulos"
         return "index";
@@ -68,7 +68,8 @@ public class LoginController {
     //Main page for registered user
     @RequestMapping(value = "registered/main", method = RequestMethod.GET)
     public String registeredUserMain(Model model) {
-        return "userindex";
+        model.addAttribute("user", new UserImpl());
+        return "index";
     }
 
     //Main page for admin

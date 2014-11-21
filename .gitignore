@@ -1,6 +1,5 @@
 
-src/main/resources/db_connection.properties
-*/pages/test.jsp
+*.properties
 
 ### Java ###
 *.class
