@@ -9,11 +9,16 @@ $(document).ready(function(){
               minlength: 3
             },
             password: {
-                required: true
+               required: true,
+               minlength: 5
+            },
+            email: {
+                required: true,
+                email: true
             },
             password2: {
-                required: true,
-                equalTo: "#password"
+               required: true,
+               equalTo: "#password"
             }
         }
     });

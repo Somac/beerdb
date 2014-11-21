@@ -1,3 +1,5 @@
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
 body {
     padding-top: 70px;
     padding-bottom: 20px;
@@ -21,6 +23,33 @@ body {
 
 .dev{
     border: 1px solid red;
+}
+
+.error{
+    color: red;
+}
+
+
+#loginbox{
+    margin-top:50px;
+}
+
+.login-close-button{
+    float:right;
+    position: relative;
+    top:-25px;
+}
+
+#login-panel-body{
+    padding-top:30px;
+}
+
+.login-input-group{
+    margin-bottom:25px;
+}
+
+#login-form-group{
+    margin-top:10px;
 }
 
 

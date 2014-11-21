@@ -140,7 +140,6 @@
                         <form:errors path="password"/>
                         Password:
                         <input name="password2" type="password" class="form-control"/>
-
                         <button type="submit" class="btn btn-primary">Seivaa!</button>
                     </form:form>
                 </div>
@@ -156,31 +155,39 @@
     </div>
 </div>
 
-<!-- LOG IN pop-up -->
+<!-- SIGN IN pop-up -->
 <div class="modal" id="sign-in-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">SIGN IN</h4>
-            </div>
-            <div class="modal-body">
-                <div class="col-lg-6">
-                    <form action="j_spring_security_check" method="POST">
-                        Username:
-                        <input type="text" class="form-control" name="j_username">
-                        Password:
-                        <input type="password" class="form-control" name="j_password">
+        <div id="loginbox" class="mainbox col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info" >
+                <div class="panel-heading">
+                    <div class="panel-title">Sign In</div>
+                    <button type="button" class="close login-close-button" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
 
-                        <button type="submit" class="btn btn-primary">Go!</button>
+                <div id="login-panel-body" class="panel-body" >
+
+                    <form action="j_spring_security_check" method="POST" id="loginform" class="form-horizontal" role="form" >
+                        <div class="input-group login-input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input id="login-username" type="text" class="form-control" name="j_username" placeholder="username">
+                        </div>
+
+                        <div class="input-group login-input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <input id="login-password" type="password" class="form-control" name="j_password" placeholder="password">
+                        </div>
+
+                        <div class="error"><c:out value="${loginError}"/></div>
+
+                        <div id="login-form-group" class="form-group">
+                            <div class="col-sm-12 controls">
+                                <button type="submit" class="btn btn-success">Login</button>
+                            </div>
+                        </div>
                     </form>
-                </div>
-                <div class="col-lg-6">
-                    <!-- prerendered text, username validation? -->
-                </div>
-                <div class="modal-footer">
-                    <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
-                    <%--<button type="submit" class="btn btn-primary">Save changes</button>--%>
+
                 </div>
             </div>
         </div>
@@ -241,6 +248,19 @@
     </div> <!-- row -->
 
 </div> <!-- container -->
+
+<script>
+$(document).ready(function() {
+    <c:if test="${openSignInModalIfLoginFail == true}">
+    $('#sign-in-modal').modal('show');
+    </c:if>
+
+    <%--<c:if test="${openSignUpModalIfFormErrors == true}">--%>
+    <%--$('#sign-up-modal').modal('show');--%>
+    <%--</c:if>--%>
+});
+</script>
+
 
 <!-- Footer -->
 <div class="footer navbar navbar-default navbar-fixed-bottom">

@@ -36,9 +36,10 @@ public class LoginController {
 
 
     @RequestMapping(value="signup", method = RequestMethod.POST)
-    public String signupSubmit(@Valid @ModelAttribute("user") UserImpl user, BindingResult bindingResult){
+    public String signupSubmit(@Valid @ModelAttribute("user") UserImpl user, Model model, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
+//            model.addAttribute("openSignUpModalIfFormErrors", true);
             return "index";
         }
 
@@ -51,9 +52,11 @@ public class LoginController {
 
     @RequestMapping(value="loginfail", method = RequestMethod.GET)
     public String loginError(Model model) {
-        model.addAttribute("user", new UserImpl());
 
-        //model, "ei onnistunut"
+        model.addAttribute("user", new UserImpl());
+        model.addAttribute("openSignInModalIfLoginFail", true);
+        model.addAttribute("loginError", "Username and/or password is wrong!");
+
         return "index";
     }
 
