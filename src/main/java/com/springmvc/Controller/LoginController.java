@@ -2,6 +2,7 @@ package com.springmvc.Controller;
 
 import com.springmvc.Bean.UserImpl;
 import com.springmvc.DAO.UserDAO;
+import com.springmvc.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +24,9 @@ public class LoginController {
     private UserDAO userDAO;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     @Qualifier("encoder")
     private PasswordEncoder passwordEncoder;
 
@@ -38,8 +42,13 @@ public class LoginController {
     @RequestMapping(value="signup", method = RequestMethod.POST)
     public String signupSubmit(@Valid @ModelAttribute("user") UserImpl user, Model model, BindingResult bindingResult){
 
+        System.out.println(user.getUsername());
+        System.out.println(user.getEmail());
+
         if(bindingResult.hasErrors()){
-//            model.addAttribute("openSignUpModalIfFormErrors", true);
+            //should never go here, because front-end validation is 1:1 with back-end validation
+            return "index";
+        } else if(userService.checkIfUsernameOrEmailAlreadyExists(user.getUsername(), user.getEmail())==true){
             return "index";
         }
 
@@ -51,7 +60,7 @@ public class LoginController {
 
 
     @RequestMapping(value="loginfail", method = RequestMethod.GET)
-    public String loginError(Model model) {
+    public String loginFail(Model model) {
 
         model.addAttribute("user", new UserImpl());
         model.addAttribute("openSignInModalIfLoginFail", true);

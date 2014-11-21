@@ -1,6 +1,9 @@
 $(document).ready(function(){
 
-    <!-- Generates first column to the menu when page is loaded and presents it via it's own template -->
+   /*
+    * Generates first column to the menu when page is loaded and presents it via it's own template
+    */
+
     $.getJSON("fetchColumnOneData", function(response){
         console.log(response);
 
@@ -12,7 +15,7 @@ $(document).ready(function(){
     });
 
 
-    /*
+   /*
     * When link (some beerstyle) have been clicked in column 1. it triggers AJAX call below
     * and generates content to the second menu and presents it via it's own template.
     */

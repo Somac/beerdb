@@ -30,6 +30,10 @@ body {
 }
 
 
+/*
+CSS below is only used in sign in/up modals
+*/
+
 .loginbox{
     margin-top:50px;
 }

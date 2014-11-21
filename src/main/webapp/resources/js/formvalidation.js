@@ -1,6 +1,8 @@
 $(document).ready(function(){
 
-    <!-- Front-end validation for user registration -->
+   /*
+    * Front-end validation for user registration *
+    */
 
     $('#validate-form').validate({
         rules: {

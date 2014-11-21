@@ -1,6 +1,7 @@
 package com.springmvc.DAO;
 
 import com.springmvc.Bean.User;
+import com.springmvc.RowMapper.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -35,5 +36,35 @@ public class UserDAOImpl implements UserDAO{
         jdbcTemplate.update(sql, parameters);
         jdbcTemplate.update(sql2);
     }
+
+
+    public List<User> findAllUsers(){
+
+        String sql = "SELECT userID, username, firstname, lastname, email, created FROM User";
+
+        RowMapper<User> userRowMapper = new UserRowMapper();
+
+        List<User> users = jdbcTemplate.query(sql, userRowMapper);
+
+        return users;
+    }
+
+    public List<User> findUsersByUsernameOrEmail(String username, String email){
+
+        System.out.println("Toisen kerran:");
+        System.out.println(username);
+        System.out.println(email);
+
+        String sql = "SELECT username, firstname, lastname, email, created FROM User WHERE username=? OR email=?";
+
+        Object[] parameters = new Object[]{username, email};
+
+        RowMapper<User> userRowMapper = new UserRowMapper();
+
+        List<User> users = jdbcTemplate.query(sql, parameters, userRowMapper);
+
+        return users;
+    }
+
 
 }

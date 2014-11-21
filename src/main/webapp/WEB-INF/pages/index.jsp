@@ -202,7 +202,7 @@
                             <input id="login-password" type="password" class="form-control" name="j_password" placeholder="password">
                         </div>
 
-                        <!-- If there is errors during login (wrong username/password, username already exists) -->
+                        <!-- loginError = "Username and/or password is wrong!" -->
                         <div class="error"><c:out value="${loginError}"/></div>
 
                         <div id="login-form-group form-group">
@@ -217,7 +217,6 @@
         </div>
     </div>
 </div>
-
 
 
 <div class="container">
@@ -273,15 +272,12 @@
 
 </div> <!-- container -->
 
+
 <script>
 $(document).ready(function() {
     <c:if test="${openSignInModalIfLoginFail == true}">
     $('#sign-in-modal').modal('show');
     </c:if>
-
-    <%--<c:if test="${openSignUpModalIfFormErrors == true}">--%>
-    <%--$('#sign-up-modal').modal('show');--%>
-    <%--</c:if>--%>
 });
 </script>
 
