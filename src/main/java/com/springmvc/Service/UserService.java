@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
 
-    boolean checkIfUsernameOrEmailAlreadyExists(String username, String email);
+    boolean checkIfUsernameAlreadyExists(String username);
+    boolean checkIfEmailAlreadyExists(String email);
 
 }

@@ -3,11 +3,11 @@ package com.springmvc.DAO;
 import com.springmvc.Bean.User;
 import com.springmvc.RowMapper.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -49,21 +49,30 @@ public class UserDAOImpl implements UserDAO{
         return users;
     }
 
-    public List<User> findUsersByUsernameOrEmail(String username, String email){
+    public User findUserByUsername(String username) throws EmptyResultDataAccessException{
 
-        System.out.println("Toisen kerran:");
-        System.out.println(username);
-        System.out.println(email);
+        String sql = "SELECT username, firstname, lastname, email, created FROM User WHERE username=?";
 
-        String sql = "SELECT username, firstname, lastname, email, created FROM User WHERE username=? OR email=?";
-
-        Object[] parameters = new Object[]{username, email};
+        Object[] parameters = new Object[]{username};
 
         RowMapper<User> userRowMapper = new UserRowMapper();
 
-        List<User> users = jdbcTemplate.query(sql, parameters, userRowMapper);
+        User u = jdbcTemplate.queryForObject(sql, parameters, userRowMapper);
 
-        return users;
+        return u;
+    }
+
+    public User findUserByEmail(String email) throws EmptyResultDataAccessException{
+
+        String sql = "SELECT username, firstname, lastname, email, created FROM User WHERE email=?";
+
+        Object[] parameters = new Object[]{email};
+
+        RowMapper<User> userRowMapper = new UserRowMapper();
+
+        User u  = jdbcTemplate.queryForObject(sql, parameters, userRowMapper);
+
+        return u;
     }
 
 

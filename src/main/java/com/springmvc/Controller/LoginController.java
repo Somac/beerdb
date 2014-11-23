@@ -42,13 +42,16 @@ public class LoginController {
     @RequestMapping(value="signup", method = RequestMethod.POST)
     public String signupSubmit(@Valid @ModelAttribute("user") UserImpl user, Model model, BindingResult bindingResult){
 
-        System.out.println(user.getUsername());
-        System.out.println(user.getEmail());
-
         if(bindingResult.hasErrors()){
             //should never go here, because front-end validation is 1:1 with back-end validation
             return "index";
-        } else if(userService.checkIfUsernameOrEmailAlreadyExists(user.getUsername(), user.getEmail())==true){
+        }else if(userService.checkIfUsernameAlreadyExists(user.getUsername())){
+            model.addAttribute("openSignUpModalIfSignUpFail", true);
+            model.addAttribute("signupError", "Username already exists. Choose another.");
+            return "index";
+        }else if(userService.checkIfEmailAlreadyExists(user.getEmail())){
+            model.addAttribute("openSignUpModalIfSignUpFail", true);
+            model.addAttribute("signupError", "Email already exists. Choose another.");
             return "index";
         }
 
@@ -60,13 +63,13 @@ public class LoginController {
 
 
     @RequestMapping(value="loginfail", method = RequestMethod.GET)
-    public String loginFail(Model model) {
+        public String loginFail(Model model) {
 
-        model.addAttribute("user", new UserImpl());
-        model.addAttribute("openSignInModalIfLoginFail", true);
-        model.addAttribute("loginError", "Username and/or password is wrong!");
+            model.addAttribute("user", new UserImpl());
+            model.addAttribute("openSignInModalIfLoginFail", true);
+            model.addAttribute("loginError", "Username and/or password is wrong!");
 
-        return "index";
+            return "index";
     }
 
     @RequestMapping(value="logout", method = RequestMethod.GET)

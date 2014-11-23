@@ -4,9 +4,8 @@ package com.springmvc.Service;
 import com.springmvc.Bean.User;
 import com.springmvc.DAO.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class UserServiceImpl implements UserService {
@@ -14,15 +13,29 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDAO userDAO;
 
+    @Autowired
+    private User user;
+
     @Override
-    public boolean checkIfUsernameOrEmailAlreadyExists(String username, String email){
+    public boolean checkIfUsernameAlreadyExists(String username){
 
-       List<User> users = userDAO.findUsersByUsernameOrEmail(username, email);
-
-        if(!users.isEmpty()){
-            return true;
+        try{
+            user = userDAO.findUserByUsername(username);
+                return true;
+        }catch(EmptyResultDataAccessException e){
+            return false;
         }
-       return false;
+    }
+
+    @Override
+    public boolean checkIfEmailAlreadyExists(String email){
+
+        try{
+            user = userDAO.findUserByEmail(email);
+               return true;
+        }catch(EmptyResultDataAccessException e){
+            return false;
+        }
     }
 
 
