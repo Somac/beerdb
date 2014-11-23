@@ -1,38 +1,30 @@
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 
 body {
-    padding-top: 70px;
+    padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #ededed;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .menu{
-    padding-top: 40px;
+    padding-top: 60px;
 }
 
-.footer {
-    background-color: #233140;
+.introduction{
+    height: 230px;
+    line-height: 230px;
+    background-color: #dbdbdb;
 }
 
-.footer a{
-    color: #ffffff;
-}
-
-.footer img{
-    padding-top: 10px;
-}
-
-.dev{
-    border: 1px solid red;
-}
-
-.error{
-    color: red;
+.vertical-align{
+    display:inline-block;
+    vertical-align: middle;
+    line-height: normal;
 }
 
 
-/*
-CSS below is only used in sign in/up modals
-*/
+/* Sign in/up modals */
 
 .loginbox{
     margin-top:50px;
@@ -56,4 +48,27 @@ CSS below is only used in sign in/up modals
     margin-top:10px;
 }
 
+/* Footer */
 
+.footer {
+    background-color: #233140;
+}
+
+.footer a{
+    color: #ffffff;
+}
+
+.footer img{
+    padding-top: 10px;
+}
+
+
+/* Misc */
+
+.dev{
+    border: 1px solid red;
+}
+
+.error{
+    color: red;
+}

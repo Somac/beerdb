@@ -12,12 +12,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet"/>
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet"/>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/css/semantic.min.css" rel="stylesheet"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
     <script src="<c:url value="/resources/js/callajax.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/resources/js/formvalidation.js"/>" type="text/javascript"></script>
     <script src="<c:url value="/resources/js/beerdb.js"/>" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/javascript/semantic.min.js" type="text/javascript"></script>
     <c:set var="context" value="${pageContext.request.contextPath}" />
 
     <!-- MUSTACHE.JS TEMPLATING -->
@@ -37,31 +39,37 @@
 
     <!-- Templating for third column's data -->
     <script type="text/template" id="template-column-three">
-        <h1 align="center">{{name}}</h1>
+        <h1>{{name}}</h1>
         {{#beerPackage}}
-        <div>{{price}} euros, {{size}}l</div>
+        <p style="font-size: 150%">{{price}} € <span style="font-style: italic; font-size: 80%">{{size}}l</span></p>
+
+        <div style="font-style: italic">*litrahinta* €/l</div>
         {{/beerPackage}}
+
         <br>
-        <p>Description: {{description}}</p>
-        <p>Alcohol: {{alcohol}}%</p>
+        <p>{{description}}</p>
+        <p>{{alcohol}}%</p>
+
         {{#brewery}}
         <p>Brewery: {{name}}, {{country}}</p>
         {{/brewery}}
-        Ingredients:
-        {{#beerRawMaterialList}}
-        <ol>
-            {{#.}}
-             <li>{{rawMaterial}}</li>
-            {{/.}}
-        </ol>
-        {{/beerRawMaterialList}}
 
         {{#user}}
         <p>Uploaded by {{username}} on {{created}}</p>
         {{/user}}
         <br>
+
     </script>
 </head>
+
+<%--Ingredients:--%>
+<%--{{#beerRawMaterialList}}--%>
+<%--<ol>--%>
+<%--{{#.}}--%>
+<%--<li>{{rawMaterial}}</li>--%>
+<%--{{/.}}--%>
+<%--</ol>--%>
+<%--{{/beerRawMaterialList}}--%>
 
 <body>
 
@@ -214,34 +222,37 @@
                             </div>
                         </div>
                     </form>
+                </div> <!-- login-panel-body -->
+            </div> <!-- panel -->
+        </div> <!-- loginbox -->
+    </div> <!-- modal-dialog -->
+</div> <!-- modal -->
 
-                </div>
-            </div>
+<div class="container-fluid introduction">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <span class="vertical-align">
+                <h1>Database for Beers and Brewerys</h1>
+
+                    <!-- Introduction text for unregistered user -->
+                    <sec:authorize access="isAnonymous()">
+                    <p class="lead">BeerDB is your database for delicious beers and wonderful brewerys.
+                        <a href="#" class="open-sign-up-modal">Sign Up</a> and you can post your own beers to database and even
+                        rate them (well, not yet, but it's coming..)! So much wow. Freetime project.
+                    </p>
+                    </sec:authorize>
+
+                    <!-- Introduction text for registered user -->
+                    <sec:authorize access="isAuthenticated()">
+                    <p class="lead">You are registered as "<sec:authentication property="principal.username"/>"
+                        and this text is mainly placeholder</p>
+                    </sec:authorize>
+            </span>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <h1>Database for Beers and Brewerys</h1>
-
-            <!-- Introduction text for unregistered user -->
-            <sec:authorize access="isAnonymous()">
-            <p class="lead">BeerDB is your database for delicious beers and wonderful brewerys.
-                <a href="#" class="open-sign-up-modal">Sign Up</a> and you can post your own beers to database and even
-                rate them (well, not yet, but it's coming..)! So much wow. Freetime project.
-            </p>
-            </sec:authorize>
-
-            <!-- Introduction text for registered user -->
-            <sec:authorize access="isAuthenticated()">
-            <p class="lead">You are registered as "<sec:authentication property="principal.username"/>"
-                and this text is mainly placeholder</p>
-            </sec:authorize>
-        </div>
-    </div>
-
     <div class="row">
         <div class="menu">
             <!-- COLUMN ONE. Menu where beerstyles are listed -->
@@ -268,7 +279,6 @@
             </div>
         </div> <!-- menu -->
     </div> <!-- row -->
-
 </div> <!-- container -->
 
 

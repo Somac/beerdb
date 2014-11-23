@@ -14,6 +14,10 @@ $('#reset-form').click(function(){
 
 });
 
+    $('.ui.rating')
+        .rating('setting', 'clearable', true)
+    ;
+
 
 });
 

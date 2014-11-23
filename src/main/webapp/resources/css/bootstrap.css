@@ -4177,7 +4177,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #cccccc;
 }
 .navbar-inverse {
-  background-color: #222222;
+  background-color: #233140;
   border-color: #080808;
 }
 .navbar-inverse .navbar-brand {
@@ -5194,7 +5194,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-primary > .panel-heading {
   color: #ffffff;
-  background-color: #428bca;
+  background-color: #233140;
   border-color: #428bca;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
@@ -5229,7 +5229,7 @@ a.list-group-item-danger.active:focus {
   border-color: #bce8f1;
 }
 .panel-info > .panel-heading {
-  color: #31708f;
+  color: #233140;
   background-color: #d9edf7;
   border-color: #bce8f1;
 }
