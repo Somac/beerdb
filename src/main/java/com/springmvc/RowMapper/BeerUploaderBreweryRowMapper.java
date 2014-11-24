@@ -38,6 +38,7 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
                     beerPackage.setId(rs.getInt("beer_packageID"));
                     beerPackage.setPrice(rs.getDouble("price"));
                     beerPackage.setSize(rs.getDouble("size"));
+                    beerPackage.setPerLiter();
 
                     //Uploader of the beer
                     User uploader = new UserImpl();

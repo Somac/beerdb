@@ -6,23 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BeerDB</title>
+    <!-- Links and scripts (tag file) -->
+    <t:dependencies></t:dependencies>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet"/>
-    <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet"/>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/css/semantic.min.css" rel="stylesheet"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
-    <script src="<c:url value="/resources/js/callajax.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/resources/js/formvalidation.js"/>" type="text/javascript"></script>
-    <script src="<c:url value="/resources/js/beerdb.js"/>" type="text/javascript"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/javascript/semantic.min.js" type="text/javascript"></script>
-    <c:set var="context" value="${pageContext.request.contextPath}" />
 
-    <!-- MUSTACHE.JS TEMPLATING -->
+    <!-- MUSTACHE.JS TEMPLATES for parsing JSON to HTML -->
     <!-- Templating for first column's data -->
     <script type="text/template" id="template-column-one">
         {{#.}}
@@ -41,193 +29,46 @@
     <script type="text/template" id="template-column-three">
         <h1>{{name}}</h1>
         {{#beerPackage}}
-        <p style="font-size: 150%">{{price}} € <span style="font-style: italic; font-size: 80%">{{size}}l</span></p>
-
-        <div style="font-style: italic">*litrahinta* €/l</div>
+        <p style="font-size: 150%">{{price}} € <span style="font-style: italic; font-size: 80%">{{size}}l</span><br></p>
+        <p style="font-style: italic">{{perLiter}} €/l</p>
         {{/beerPackage}}
 
-        <br>
-        <p>{{description}}</p>
-        <p>{{alcohol}}%</p>
+        <div class="title">
+            <h2>Description</h2>
+        </div>
+        <p>Contains {{alcohol}}% percent of alcohol. {{description}}</p>
+        <hr>
 
+        <div class="title">
+            <h2>Brewery</h2>
+        </div>
         {{#brewery}}
-        <p>Brewery: {{name}}, {{country}}</p>
+        <p>{{name}}, {{country}}</p>
         {{/brewery}}
+        <hr>
 
+        <div class="title">
+            <h2>Uploader</h2>
+        </div>
         {{#user}}
-        <p>Uploaded by {{username}} on {{created}}</p>
+        <p>{{username}} on {{created}}</p>
         {{/user}}
+        <hr>
+
+        <div class="title">
+            <h2>Rating</h2>
+        </div>
+        <div class="ui star rating"></div> 3.6 avg.
+        Votes given:
         <br>
 
     </script>
 </head>
-
-<%--Ingredients:--%>
-<%--{{#beerRawMaterialList}}--%>
-<%--<ol>--%>
-<%--{{#.}}--%>
-<%--<li>{{rawMaterial}}</li>--%>
-<%--{{/.}}--%>
-<%--</ol>--%>
-<%--{{/beerRawMaterialList}}--%>
-
 <body>
+<!-- Navigation bar (Tag file) -->
+<t:navigationbar></t:navigationbar>
 
-<!-- Page header comes from JSP Tags. It changes depending on the user role. This is for unregistered user -->
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- Mobile header -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">BeerDB</a>
-        </div>
-
-        <!-- Navigation bar -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-
-                <!-- Sign Up / Sign In links are shown for the unregistered user -->
-                <sec:authorize access="isAnonymous()">
-                <li>
-                    <a href="#" class="open-sign-up-modal">Sign Up</a>
-                </li>
-                <li>
-                    <a href="#" id="open-sign-in-modal">Sign In</a>
-                </li>
-                </sec:authorize>
-
-                <!-- Dropdown menu are shown for the registered user -->
-                <sec:authorize access="isAuthenticated()">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Placeholder</a></li>
-                        <li><a href="#">Placeholder</a></li>
-                        <li><a href="#">Placeholder</a></li>
-                        <li class="divider"></li>
-                        <li><a href="${context}/logout">Log off</a></li>
-                    </ul>
-                </li>
-                </sec:authorize>
-            </ul>
-        </div>
-
-    </div>
-</nav>
-
-<!-- SIGN UP MODAL -->
-<div class="modal" id="sign-up-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="loginbox" class="mainbox col-sm-8 col-sm-offset-2">
-            <div class="panel panel-info" >
-                <!-- Modal head -->
-                <div class="panel-heading">
-                    <div class="panel-title">Sign Up</div>
-                    <button type="button" class="close login-close-button" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                </div>
-                <!-- Modal body -->
-                <div class="login-panel-body panel-body">
-                     <form:form id="validate-form" modelAttribute="user" method="POST" action="${context}/signup"
-                           class="form-horizontal" role="form">
-                        <!-- Username -->
-                        <div class="input-group login-input-group">
-                            <span class="input-group-addon"></span>
-                            <form:input path="username" class="form-control" placeholder="username"/>
-                        </div>
-
-                         <!-- Firstname -->
-                         <div class="input-group login-input-group">
-                             <span class="input-group-addon"></span>
-                             <form:input path="firstname" class="form-control" placeholder="firstname"/>
-                         </div>
-
-                         <!-- Lastname -->
-                         <div class="input-group login-input-group">
-                             <span class="input-group-addon"></span>
-                             <form:input path="lastname" class="form-control" placeholder="lastname"/>
-                         </div>
-
-                         <!-- Email -->
-                         <div class="input-group login-input-group">
-                             <span class="input-group-addon"></span>
-                             <form:input path="email" class="form-control" placeholder="email"/>
-                         </div>
-
-                         <!-- Password -->
-                         <div class="input-group login-input-group">
-                             <span class="input-group-addon"></span>
-                             <form:input path="password" type="password" class="form-control" placeholder="password" id="password"/>
-                         </div>
-
-                         <!-- Password -->
-                         <div class="input-group login-input-group">
-                             <span class="input-group-addon"></span>
-                             <input name="password2" type="password" class="form-control" placeholder="password"/>
-                         </div>
-
-                         <!-- signupError = "Username already exists" / "Email already exists" -->
-                         <div class="error login-input-group"><c:out value="${signupError}"/></div>
-
-                        <div class="login-form-group form-group">
-                            <div class="col-sm-12 controls">
-                                <button type="submit" class="btn btn-success">Sign Up</button>
-                            </div>
-                        </div>
-                    </form:form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SIGN IN MODAL -->
-<div class="modal" id="sign-in-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div id="loginbox" class="mainbox col-sm-8 col-sm-offset-2">
-            <div class="panel panel-info" >
-                <!-- Modal head -->
-                <div class="panel-heading">
-                    <div class="panel-title">Sign In</div>
-                    <button type="button" class="close login-close-button" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                </div>
-                <!-- Modal body -->
-                <div id="login-panel-body" class="panel-body" >
-                    <form action="j_spring_security_check" method="POST" id="loginform" class="form-horizontal" role="form" >
-                        <!-- Username -->
-                        <div class="input-group login-input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input id="login-username" type="text" class="form-control" name="j_username" placeholder="username">
-                        </div>
-
-                        <!-- Password -->
-                        <div class="input-group login-input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                            <input id="login-password" type="password" class="form-control" name="j_password" placeholder="password">
-                        </div>
-
-                        <!-- loginError = "Username and/or password is wrong!" -->
-                        <div class="error login-input-group"><c:out value="${loginError}"/></div>
-
-                        <div id="login-form-group form-group">
-                            <div class="col-sm-12 controls">
-                                <button type="submit" class="btn btn-success">Login</button>
-                            </div>
-                        </div>
-                    </form>
-                </div> <!-- login-panel-body -->
-            </div> <!-- panel -->
-        </div> <!-- loginbox -->
-    </div> <!-- modal-dialog -->
-</div> <!-- modal -->
-
+<!-- Actual body of the site -->
 <div class="container-fluid introduction">
     <div class="row">
         <div class="col-md-6 col-md-offset-3 text-center">
@@ -244,8 +85,8 @@
 
                     <!-- Introduction text for registered user -->
                     <sec:authorize access="isAuthenticated()">
-                    <p class="lead">You are registered as "<sec:authentication property="principal.username"/>"
-                        and this text is mainly placeholder</p>
+                    <p class="lead">You are logged in as "<sec:authentication property="principal.username"/>"
+                        and this text is mainly placeholder. </p>
                     </sec:authorize>
             </span>
         </div>
@@ -294,18 +135,7 @@ $(document).ready(function() {
 });
 </script>
 
-
-<!-- Footer -->
-<div class="footer navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <a target="_blank" href="https://github.com/juhaniniinimaa/beerdb">
-                    <img src="<c:url value="/resources/logos/GitHub-Mark-32px.png"/>" alt="GitHub"/></a>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- Footer (tag files) -->
+<t:footer></t:footer>
 </body>
 </html>

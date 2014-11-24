@@ -12,5 +12,9 @@ public interface BeerPackage {
     void setPrice(double price);
 
     double getSize();
-    public void setSize(double size);
+    void setSize(double size);
+
+    double getPerLiter();
+    void setPerLiter();
+
 }

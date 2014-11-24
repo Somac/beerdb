@@ -1,0 +1,21 @@
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<title>BeerDB</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet"/>
+<link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet"/>
+<link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/css/semantic.min.css" rel="stylesheet"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
+<script src="<c:url value="/resources/js/callajax.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/formvalidation.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/beerdb.js"/>" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/javascript/semantic.min.js" type="text/javascript"></script>
+<c:set var="context" value="${pageContext.request.contextPath}" />
+<%--<c:set var="username">--%>
+<%--<sec:authentication property="principal.username" />--%>
+<%--</c:set>--%>
