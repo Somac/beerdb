@@ -3,7 +3,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<!-- Modals have to be in own file so that navigationbar.tag remains usable elsewhere in the code. Otherwise sign up / sign in form is
+<!-- Modals have to be in own file so that navigationbar.tag remains reusable elsewhere in the code. Otherwise sign up / sign in form is
 following you to anywhere and blows all the other spring forms & requires empty User object in every GET method -->
 
 <!-- SIGN UP MODAL -->
