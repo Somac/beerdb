@@ -9,8 +9,7 @@
     <!-- Links and scripts (tag file) -->
     <t:dependencies></t:dependencies>
 
-
-    <!-- MUSTACHE.JS TEMPLATES for parsing JSON to HTML -->
+    <!-- MUSTACHE.JS TEMPLATES for parsing JSON inside to HTML -->
     <!-- Templating for first column's data -->
     <script type="text/template" id="template-column-one">
         {{#.}}
@@ -65,8 +64,11 @@
     </script>
 </head>
 <body>
-<!-- Navigation bar (Tag file) -->
+<!-- Navigation bar (tag file) -->
 <t:navigationbar></t:navigationbar>
+
+<!-- Navigation bar modals -->
+<t:signupandsigninmodals></t:signupandsigninmodals>
 
 <!-- Actual body of the site -->
 <div class="container-fluid introduction">
@@ -87,6 +89,8 @@
                     <sec:authorize access="isAuthenticated()">
                     <p class="lead">You are logged in as "<sec:authentication property="principal.username"/>"
                         and this text is mainly placeholder. </p>
+
+                     <!-- "You added beer to db" comes to here - WIP -->
                     </sec:authorize>
             </span>
         </div>
@@ -135,7 +139,7 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- Footer (tag files) -->
+<!-- Footer (tag file) -->
 <t:footer></t:footer>
 </body>
 </html>

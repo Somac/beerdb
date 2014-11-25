@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /*
- This controller only listens jQuery calls (callajax.js) from single page menu and serves JSONs back to responses.
+ This controller only listens jQuery calls (callajax.js) from single page menu and sends JSONs back to responses.
  */
 
 @Controller

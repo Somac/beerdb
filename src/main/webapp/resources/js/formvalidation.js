@@ -4,7 +4,7 @@ $(document).ready(function(){
     * Front-end validation for user registration *
     */
 
-    $('#validate-form').validate({
+    $('#validate-sign-up-form').validate({
         rules: {
             username: {
               required: true,
@@ -24,4 +24,24 @@ $(document).ready(function(){
             }
         }
     });
+
+//    $('#reset-sign-up-form').click(function(){
+//        var form = $('#validate-sign-up-form').validate();
+//        form.resetForm();
+//
+//    });
+
+    /*
+     * Front-end validation for "add beer" function *
+     */
+
+    $('#validate-add-beer-form').validate({
+        rules: {
+            name: {
+                required: true,
+                minlength: 2
+            }
+        }
+    });
+
 });

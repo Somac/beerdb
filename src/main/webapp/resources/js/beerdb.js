@@ -8,11 +8,6 @@ $('#open-sign-in-modal').click(function(){
     $('#sign-in-modal').modal('show');
 });
 
-$('#reset-form').click(function(){
-    var form = $('#validate-form').validate();
-    form.resetForm();
-
-});
 
 });
 
