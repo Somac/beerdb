@@ -2,6 +2,9 @@ package com.springmvc.Controller;
 
 import com.springmvc.Bean.BeerImpl;
 import com.springmvc.Bean.BeerStyleImpl;
+import com.springmvc.Bean.User;
+import com.springmvc.DAO.UserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,27 +18,31 @@ import java.security.Principal;
  (adding/editing/rating beers, editing own profile etc.)
  */
 
+
 @Controller
-@RequestMapping("/")
+@RequestMapping("/registered/")
 public class RegisteredUserController {
 
-    @RequestMapping(value="registered/addbeer", method = RequestMethod.GET)
+    @Autowired
+    private UserDAO userDAO;
+
+    @RequestMapping(value="addbeer", method = RequestMethod.GET)
     public String addBeerForm(@ModelAttribute("beer") BeerImpl beer, Model model){
         model.addAttribute("beer", new BeerImpl());
 
         return "registered/beerform";
     }
 
-    @RequestMapping(value="registered/addbeer", method = RequestMethod.POST)
+    @RequestMapping(value="addbeer", method = RequestMethod.POST)
     public String addBeerFormSubmit(@ModelAttribute("beer") BeerImpl beer, Model model){
 
-        return "redirect:/registered/main";
+        return "redirect:/registered/addbeer";
     }
 
-    @RequestMapping(value="registered/profile", method = RequestMethod.GET)
-    public String showProfile(Principal principal){
+    @RequestMapping(value="profile", method = RequestMethod.GET)
+    public String showProfile(Principal principal, Model model){
 
-        //DAO -> principal.getName
+        model.addAttribute("user", userDAO.findUserByUsername(principal.getName()));
 
         return "registered/userprofile";
     }

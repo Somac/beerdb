@@ -37,6 +37,11 @@ hr{
    margin-bottom: -10px;
 }
 
+/* Is used to make a little gap between navbar and actual content */
+.gap{
+    margin-top: 50px;
+}
+
 
 /* Sign in/up modals */
 

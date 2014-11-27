@@ -13,8 +13,22 @@
 <!-- Navigation bar (Tag file) -->
 <t:navigationbar></t:navigationbar>
 
+<div class="container gap">
+    <div class="row">
 
-PLACEHOLDER SIVU PROFIILIN NÄYTTÄMISELLE.
+        These are going to be editable.
+
+        <p>${user.username}</p>
+        <p>${user.firstname}</p>
+        <p>${user.lastname}</p>
+        <p>${user.email}</p>
+        <p>${user.created}</p>
+
+    </div>
+</div>
+
+
+
 <!-- Footer (tag files) -->
 <t:footer></t:footer>
 </body>

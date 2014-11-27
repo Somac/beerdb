@@ -13,7 +13,7 @@
 <!-- Navigation bar (Tag file) -->
 <t:navigationbar></t:navigationbar>
 
-<div class="container" style="margin-top: 50px">
+<div class="container gap">
     <div class="row">
         PLACEHOLDER SIVU OLUEN LISÄYKSELLE.
         <form:form id="#" modelAttribute="beer" method="POST" action="${context}/registered/addbeer"
