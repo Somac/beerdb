@@ -2,6 +2,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<sec:authorize access="isAuthenticated()">
+    <c:set var="principalUsername">
+        <sec:authentication property="principal.username" />
+    </c:set>
+</sec:authorize>
 <!-- Navigation bar -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -39,7 +44,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class=""></span>
-                            <sec:authentication property="principal.username"/> <span class="caret"></span></a>
+                            ${principalUsername} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="${context}/registered/profile" type="submit">Profile</a></li>
                             <li><a href="#">Settings</a></li>

@@ -16,13 +16,11 @@
 <div class="container gap">
     <div class="row">
 
-        These are going to be editable.
+        Placeholder page. These are going to be editable etc.
 
-        <p>${user.username}</p>
-        <p>${user.firstname}</p>
-        <p>${user.lastname}</p>
-        <p>${user.email}</p>
-        <p>${user.created}</p>
+        <p>Username: ${user.username}</p>
+        <p>Email: ${user.email}</p>
+        <p>Created: ${user.created}</p>
 
     </div>
 </div>

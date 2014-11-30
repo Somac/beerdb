@@ -16,6 +16,3 @@
 <script src="<c:url value="/resources/js/beerdb.js"/>" type="text/javascript"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.19.3/javascript/semantic.min.js" type="text/javascript"></script>
 <c:set var="context" value="${pageContext.request.contextPath}" />
-<%--<c:set var="username">--%>
-<%--<sec:authentication property="principal.username" />--%>
-<%--</c:set>--%>

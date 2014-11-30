@@ -1,6 +1,5 @@
 package com.springmvc.Controller;
 
-import com.springmvc.Bean.BeerImpl;
 import com.springmvc.Bean.UserImpl;
 import com.springmvc.DAO.UserDAO;
 import com.springmvc.Service.UserService;
@@ -13,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -44,7 +44,8 @@ public class LoginController {
 
 
     @RequestMapping(value="signup", method = RequestMethod.POST)
-    public String signUpFormSubmit(@Valid @ModelAttribute("user") UserImpl user, Model model, BindingResult bindingResult){
+    public String signUpFormSubmit(@Valid @ModelAttribute("user") UserImpl user, BindingResult bindingResult,
+                                   Model model, RedirectAttributes redirectAttributes){
 
         if(bindingResult.hasErrors()){
             //should never go here, because front-end validation is 1:1 with back-end validation
@@ -62,6 +63,9 @@ public class LoginController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.saveUser(user);
 
+        redirectAttributes.addFlashAttribute("success", "You just made a new account! Now you can sign in with your username and " +
+                "password");
+
         return "redirect:/";
     }
 
@@ -76,18 +80,9 @@ public class LoginController {
         return "index";
     }
 
-    @RequestMapping(value="logout", method = RequestMethod.GET)
-    public String logout(Model model) {
-        model.addAttribute("user", new UserImpl());
-
-        //model, "olet kirjautunut ulos" tms.
-        return "index";
-    }
-
     //Main page for registered user
     @RequestMapping(value = "registered/main", method = RequestMethod.GET)
     public String registeredUserMain(Model model) {
-        model.addAttribute("user", new UserImpl());
         return "redirect:/";
     }
 
@@ -97,5 +92,15 @@ public class LoginController {
 
         return "placeholder";
     }
+
+
+//    @RequestMapping(value="logout", method = RequestMethod.GET)
+//    public String logout(RedirectAttributes redirectAttributes) {
+//
+//
+//        redirectAttributes.addFlashAttribute("success", "You have been successfully logged out!");
+//
+//        return "redirect:/";
+//    }
 
 }

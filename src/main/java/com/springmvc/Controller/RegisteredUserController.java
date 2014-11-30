@@ -34,7 +34,7 @@ public class RegisteredUserController {
     }
 
     @RequestMapping(value="addbeer", method = RequestMethod.POST)
-    public String addBeerFormSubmit(@ModelAttribute("beer") BeerImpl beer, Model model){
+    public String addBeerFormSubmit(@ModelAttribute("beer") BeerImpl beer){
 
         return "redirect:/registered/addbeer";
     }

@@ -3,6 +3,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<sec:authorize access="isAuthenticated()">
+<c:set var="principalUsername">
+    <sec:authentication property="principal.username" />
+</c:set>
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,9 +62,6 @@
         <div class="title">
             <h2>Rating</h2>
         </div>
-        <div class="ui star rating"></div> 3.6 avg.
-        Votes given:
-        <br>
 
     </script>
 </head>
@@ -83,11 +85,13 @@
                         <a href="#" class="open-sign-up-modal">Sign Up</a> and you can post your own beers to database and even
                         rate them (well, not yet, but it's coming..)! So much wow. Freetime project.
                     </p>
+                    <!-- success = "you have created a new account" OR "you have logged out"-->
+                    <p class="bg-success" style="font-size: 18px">${success}</p>
                     </sec:authorize>
 
                     <!-- Introduction text for registered user -->
                     <sec:authorize access="isAuthenticated()">
-                    <p class="lead">You are logged in as "<sec:authentication property="principal.username"/>"
+                    <p class="lead">You are logged in as "${principalUsername}"
                         and this text is mainly placeholder. </p>
 
                      <!-- "You added beer to db" comes to here - WIP -->
