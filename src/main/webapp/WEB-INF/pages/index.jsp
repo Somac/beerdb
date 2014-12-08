@@ -33,8 +33,8 @@
     <script type="text/template" id="template-column-three">
         <h1>{{name}}</h1>
         {{#beerPackage}}
-        <p style="font-size: 150%">{{price}} € <span style="font-style: italic; font-size: 80%">{{size}}l</span><br></p>
-        <p style="font-style: italic">{{perLiter}} €/l</p>
+        <p class="price">{{price}} € <span class="size">{{aPackage.size}}l</span><br></p>
+        <p class="perliter">{{pricePerLiter}} €/l</p>
         {{/beerPackage}}
 
         <div class="title">
@@ -47,7 +47,7 @@
             <h2>Brewery</h2>
         </div>
         {{#brewery}}
-        <p>{{name}}, {{country}}</p>
+        <p>{{name}}, {{country.name}}</p>
         {{/brewery}}
         <hr>
 
@@ -85,8 +85,8 @@
                         <a href="#" class="open-sign-up-modal">Sign Up</a> and you can post your own beers to database and even
                         rate them (well, not yet, but it's coming..)! So much wow. Freetime project.
                     </p>
-                    <!-- success = "you have created a new account" OR "you have logged out"-->
-                    <p class="bg-success" style="font-size: 18px">${success}</p>
+                    <!-- success = "you have created a new account"-->
+                    <p class="bg-success">${success}</p>
                     </sec:authorize>
 
                     <!-- Introduction text for registered user -->
@@ -94,7 +94,8 @@
                     <p class="lead">You are logged in as "${principalUsername}"
                         and this text is mainly placeholder. </p>
 
-                     <!-- "You added beer to db" comes to here - WIP -->
+                     <!-- "You added beer to db" -->
+                     <p class="bg-success">${beerAdded}</p>
                     </sec:authorize>
             </span>
         </div>

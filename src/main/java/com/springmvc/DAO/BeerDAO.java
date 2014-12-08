@@ -10,4 +10,8 @@ public interface BeerDAO {
     public List<BeerStyle> findAllBeerStyles(); //Query for column one
     public List<Beer> findAllBeersByStyle(int styleID); //Query for column two
     public Beer findBeerBreweryUploaderByID(int beerID); //Query for column three
+    public Beer findBeerByName(String name);
+
+    public void saveBeerToDB(Beer beer);
+
 }

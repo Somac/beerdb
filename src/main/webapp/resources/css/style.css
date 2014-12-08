@@ -37,13 +37,12 @@ hr{
    margin-bottom: -10px;
 }
 
-/* Is used to make a little gap between navbar and actual content */
 .gap{
-    margin-top: 50px;
+    margin-top: 50px; /* Gap between navbar and actual content */
 }
 
 
-/* Sign in/up modals */
+/* SIGN IN/UP MODALS */
 
 .loginbox{
     margin-top:50px;
@@ -67,7 +66,7 @@ hr{
     margin-top:10px;
 }
 
-/* Footer */
+/* FOOTER */
 
 .footer {
     background-color: #233140;
@@ -82,7 +81,24 @@ hr{
 }
 
 
-/* Misc */
+/* TEMPLATES */
+
+.price{
+    font-size: 150%;
+}
+
+.size{
+    font-style: italic;
+    font-size: 80%;
+}
+
+.perLiter{
+
+    font-style: italic;
+}
+
+
+/* MISC */
 
 .dev{
     border: 1px solid red;

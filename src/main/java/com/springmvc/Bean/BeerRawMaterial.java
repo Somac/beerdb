@@ -3,15 +3,30 @@ package com.springmvc.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface BeerRawMaterial {
+public class BeerRawMaterial{
 
-    int getId();
-    void setId(int id);
+    private int id;
+    private double amount;
+    private String rawMaterial;
 
-    double getAmount();
-    void setAmount(double amount);
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    String getRawMaterial();
-    void setRawMaterial(String rawMaterial);
+    public double getAmount() {
+        return amount;
+    }
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 
+    public String getRawMaterial() {
+        return rawMaterial;
+    }
+    public void setRawMaterial(String rawMaterial) {
+        this.rawMaterial = rawMaterial;
+    }
 }

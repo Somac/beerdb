@@ -11,7 +11,7 @@ public class BeerStyleRowMapper implements RowMapper<BeerStyle>{
 
     public BeerStyle mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-        BeerStyle bs = new BeerStyleImpl();
+        BeerStyle bs = new BeerStyle();
         bs.setId(rs.getInt("styleID"));
         bs.setName(rs.getString("beer_style"));
         return bs;

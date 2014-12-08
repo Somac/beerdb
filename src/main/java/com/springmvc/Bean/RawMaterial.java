@@ -3,12 +3,23 @@ package com.springmvc.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface RawMaterial {
+public class RawMaterial{
 
-    int getId();
-    void setId(int id);
+    private int id;
+    private String rawMaterial;
 
-    String getRawMaterial();
-    void setRawMaterial(String rawMaterial);
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRawMaterial() {
+        return rawMaterial;
+    }
+    public void setRawMaterial(String rawMaterial) {
+        this.rawMaterial = rawMaterial;
+    }
 
 }

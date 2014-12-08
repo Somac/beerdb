@@ -3,18 +3,45 @@ package com.springmvc.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface BeerPackage {
+public class BeerPackage{
 
-    int getId();
-    void setId(int id);
+    private int beerPackageID;
+    private double price;
+    private double pricePerLiter;
+    private aPackage aPackage;
 
-    double getPrice();
-    void setPrice(double price);
+    public BeerPackage(){
+        this.aPackage = new aPackage();
+    }
 
-    double getSize();
-    void setSize(double size);
+    public int getBeerPackageID() {
+        return beerPackageID;
+    }
+    public void setBeerPackageID(int beerPackageID) {
+        this.beerPackageID = beerPackageID;
+    }
 
-    double getPerLiter();
-    void setPerLiter();
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public aPackage getaPackage() {
+        return aPackage;
+    }
+
+    public void setaPackage(aPackage aPackage) {
+        this.aPackage = aPackage;
+    }
+
+    public double getPricePerLiter() {
+        return pricePerLiter;
+    }
+
+    public void setPricePerLiter() {
+        this.pricePerLiter = Math.floor(this.getPrice() / this.aPackage.getSize() * 100) / 100;
+    }
 
 }

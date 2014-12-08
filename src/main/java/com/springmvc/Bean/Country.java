@@ -3,23 +3,24 @@ package com.springmvc.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BeerStyle{
+public class Country {
 
-    private int id;
+    private int countryID;
     private String name;
 
-    public int getId() {
-        return id;
+    public int getCountryID() {
+        return countryID;
     }
-    public void setId(int id) {
-        this.id = id;
+
+    public void setCountryID(int countryID) {
+        this.countryID = countryID;
     }
 
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
-
 }

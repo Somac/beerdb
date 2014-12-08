@@ -1,6 +1,6 @@
 package com.springmvc.Controller;
 
-import com.springmvc.Bean.UserImpl;
+import com.springmvc.Bean.User;
 import com.springmvc.DAO.UserDAO;
 import com.springmvc.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +37,14 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.GET)
 	public String showIndexPage(Model model){
 
-        model.addAttribute("user", new UserImpl());
+        model.addAttribute("user", new User());
 
         return "index";
 	}
 
 
     @RequestMapping(value="signup", method = RequestMethod.POST)
-    public String signUpFormSubmit(@Valid @ModelAttribute("user") UserImpl user, BindingResult bindingResult,
+    public String signUpFormSubmit(@Valid @ModelAttribute("user") User user, BindingResult bindingResult,
                                    Model model, RedirectAttributes redirectAttributes){
 
         if(bindingResult.hasErrors()){
@@ -63,8 +63,8 @@ public class LoginController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.saveUser(user);
 
-        redirectAttributes.addFlashAttribute("success", "You just made a new account! Now you can sign in with your username and " +
-                "password");
+        redirectAttributes.addFlashAttribute("success",
+                "You just made a new account! Now you can sign in with your username and password");
 
         return "redirect:/";
     }
@@ -73,7 +73,7 @@ public class LoginController {
     @RequestMapping(value="loginfail", method = RequestMethod.GET)
     public String loginFail(Model model) {
 
-        model.addAttribute("user", new UserImpl());
+        model.addAttribute("user", new User());
         model.addAttribute("openSignInModalIfLoginFail", true);
         model.addAttribute("loginError", "Username and/or password is wrong!");
 
