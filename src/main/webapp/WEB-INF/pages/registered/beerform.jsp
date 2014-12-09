@@ -10,28 +10,17 @@
     <t:dependencies></t:dependencies>
     <script>
         $(function() {
-            var spinner = $( "#spinner" ).spinner();
-            $( "#disable" ).click(function() {
-                if ( spinner.spinner( "option", "disabled" ) ) {
-                    spinner.spinner( "enable" );
-                } else {
-                    spinner.spinner( "disable" );
-                }
+            $( "#alcohol" ).spinner({
+                step: 0.01,
+                numberFormat: "n"
             });
-            $( "#destroy" ).click(function() {
-                if ( spinner.spinner( "instance" ) ) {
-                    spinner.spinner( "destroy" );
-                } else {
-                    spinner.spinner();
-                }
+            $( "#price" ).spinner({
+                min: 0.1,
+                max: 80000,
+                step: 0.01,
+                numberFormat: 'C',
+                culture: 'de-DE'
             });
-            $( "#getvalue" ).click(function() {
-                alert( spinner.spinner( "value" ) );
-            });
-            $( "#setvalue" ).click(function() {
-                spinner.spinner( "value", 5 );
-            });
-            $( "button" ).button();
         });
     </script>
 </head>
@@ -64,19 +53,16 @@
             </div>
 
             <!-- Alcohol -->
-            Alcohol %
-            <div class="input-group login-input-group">
-                <span class="input-group-addon"></span>
-                <form:input path="alcohol" class="form-control" placeholder="alcohol"/>
-            </div>
+            <p>
+                Alcohol %
+                <form:input path="alcohol" id="alcohol" value="5.00"/>
+            </p>
 
             <!-- Price -->
-            Price (euros)
-            <div class="input-group login-input-group">
-                <span class="input-group-addon"></span>
-                <form:input path="beerPackage.price" class="form-control" placeholder="price"/>
-            </div>
-
+            <p>
+                Price (euros)
+                <form:input path="beerPackage.price" id="price" name="price" value="1.00"/>
+            </p>
 
             <!-- Beer style -->
             <h2>Choose style of the beer</h2>

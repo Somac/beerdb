@@ -25,11 +25,6 @@ $(document).ready(function(){
         }
     });
 
-//    $('#reset-sign-up-form').click(function(){
-//        var form = $('#validate-sign-up-form').validate();
-//        form.resetForm();
-//
-//    });
 
     /*
      * Front-end validation for "add beer" function *
@@ -39,7 +34,25 @@ $(document).ready(function(){
         rules: {
             name: {
                 required: true,
-                minlength: 2
+                minlength: 2,
+                maxlength: 30
+            },
+            description:{
+                required: true,
+                minlength: 5,
+                maxlength: 100
+            },
+            alcohol: {
+                required: true,
+                min: 0.1,
+                max: 100,
+                number: true
+            },
+            price: {
+                required: true,
+                min: 0.1,
+                max: 100000,
+                number: true
             }
         }
     });
