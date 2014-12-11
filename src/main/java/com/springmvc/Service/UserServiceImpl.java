@@ -16,7 +16,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private User user;
 
-    @Override
     public boolean checkIfUsernameAlreadyExists(String username){
 
         try{
@@ -27,7 +26,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    @Override
     public boolean checkIfEmailAlreadyExists(String email){
 
         try{

@@ -27,8 +27,21 @@ $(document).ready(function(){
 
 
     /*
-     * Front-end validation for "add beer" function *
+     * Front-end validation for "add beer" function and jquery spinner for numbers *
      */
+
+    $( "#alcohol" ).spinner({
+        step: 0.01,
+        numberFormat: "n"
+    });
+
+    $( "#price" ).spinner({
+        min: 0.1,
+        max: 80000,
+        step: 0.01,
+        numberFormat: 'C',
+        culture: 'de-DE'
+    });
 
     $('#validate-add-beer-form').validate({
         rules: {
@@ -48,7 +61,7 @@ $(document).ready(function(){
                 max: 100,
                 number: true
             },
-            price: {
+            "beerPackage.price": {
                 required: true,
                 min: 0.1,
                 max: 100000,

@@ -92,15 +92,4 @@ public class LoginController {
 
         return "placeholder";
     }
-
-
-//    @RequestMapping(value="logout", method = RequestMethod.GET)
-//    public String logout(RedirectAttributes redirectAttributes) {
-//
-//
-//        redirectAttributes.addFlashAttribute("success", "You have been successfully logged out!");
-//
-//        return "redirect:/";
-//    }
-
 }

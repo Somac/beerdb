@@ -1,6 +1,5 @@
 package com.springmvc.Service;
 
-
 import com.springmvc.Bean.Beer;
 import com.springmvc.DAO.BeerDAO;
 import org.springframework.beans.factory.annotation.Autowired;

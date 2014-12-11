@@ -8,21 +8,6 @@
 <head>
     <!-- Links and scripts (tag file) -->
     <t:dependencies></t:dependencies>
-    <script>
-        $(function() {
-            $( "#alcohol" ).spinner({
-                step: 0.01,
-                numberFormat: "n"
-            });
-            $( "#price" ).spinner({
-                min: 0.1,
-                max: 80000,
-                step: 0.01,
-                numberFormat: 'C',
-                culture: 'de-DE'
-            });
-        });
-    </script>
 </head>
 <body>
 <!-- Navigation bar (Tag file) -->
@@ -64,6 +49,16 @@
                 <form:input path="beerPackage.price" id="price" name="price" value="1.00"/>
             </p>
 
+            <!-- Package -->
+            <h2>Choose standard package size</h2>
+            <div class="input-group login-input-group">
+                <form:select path="beerPackage.aPackage.packageID">
+                    <c:forEach items="${packageDropDown}" var="apackage">
+                        <form:option value="${apackage.packageID}">${apackage.size}</form:option>
+                    </c:forEach>
+                </form:select>
+             </div>
+
             <!-- Beer style -->
             <h2>Choose style of the beer</h2>
             <div class="input-group login-input-group">
@@ -83,15 +78,6 @@
                     </c:forEach>
                 </form:select>
             </div>
-
-            <!-- Package -->
-            <h2>Choose standard package size</h2>
-            <form:select path="beerPackage.aPackage.packageID">
-                <c:forEach items="${packageDropDown}" var="apackage">
-                    <form:option value="${apackage.packageID}">${apackage.size}</form:option>
-                </c:forEach>
-            </form:select>
-
 
             <div class="login-form-group form-group">
                 <div class="col-sm-12 controls">
