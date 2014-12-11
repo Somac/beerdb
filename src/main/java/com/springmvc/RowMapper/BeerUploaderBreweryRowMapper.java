@@ -1,7 +1,6 @@
 package com.springmvc.RowMapper;
 
 import com.springmvc.Bean.*;
-import com.sun.xml.internal.bind.v2.schemagen.episode.Package;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
