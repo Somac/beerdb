@@ -7,8 +7,15 @@
         <sec:authentication property="principal.username" />
     </c:set>
 </sec:authorize>
+
+<!-- Image above navbar-->
+<div class="banner">
+    <img class="banner-image" src="<c:url value="/resources/logos/beerbanner.jpg"/>">
+    </img>
+</div>
+
 <!-- Navigation bar -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <!-- Mobile header -->

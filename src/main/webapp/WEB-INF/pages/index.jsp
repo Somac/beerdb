@@ -34,7 +34,7 @@
         <h1>{{name}}</h1>
         {{#beerPackage}}
         <p class="price">{{price}} € <span class="size">{{aPackage.size}}l</span><br></p>
-        <p class="perliter">{{pricePerLiter}} €/l</p>
+        <p class="per-liter">{{pricePerLiter}} €/l</p>
         {{/beerPackage}}
 
         <div class="title">
@@ -82,8 +82,9 @@
                     <!-- Introduction text for unregistered user -->
                     <sec:authorize access="isAnonymous()">
                     <p class="lead">BeerDB is your database for delicious beers and wonderful brewerys.
-                        <a href="#" class="open-sign-up-modal">Sign Up</a> and you can post your own beers to database and even
-                        rate them (well, not yet, but it's coming..)! So much wow. Freetime project.
+                        <a href="#" class="open-sign-up-modal">Sign Up</a> and you can post your own beers to database and
+                        rate them. So much wow. Free-time project.
+                        <div id="rating"></div>
                     </p>
                     <!-- success = "you have created a new account"-->
                     <p class="bg-success">${success}</p>
