@@ -73,7 +73,7 @@ public class RegisteredUserController {
     }
 
     @RequestMapping(value="profile", method = RequestMethod.GET)
-    public String showProfile(Principal principal, Model model){
+    public String userProfile(Principal principal, Model model){
 
         model.addAttribute("user", userDAO.findUserByUsername(principal.getName()));
 

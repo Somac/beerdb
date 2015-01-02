@@ -14,7 +14,6 @@
     <!-- Links and scripts (tag file) -->
     <t:dependencies></t:dependencies>
 
-    <!-- MUSTACHE.JS TEMPLATES for parsing JSON inside to HTML -->
     <!-- Templating for first column's data -->
     <script type="text/template" id="template-column-one">
         {{#.}}
@@ -69,9 +68,6 @@
 <!-- Navigation bar (tag file) -->
 <t:navigationbar></t:navigationbar>
 
-<!-- Navigation bar modals -->
-<t:signupandsigninmodals></t:signupandsigninmodals>
-
 <!-- Actual body of the site -->
 <div class="container-fluid introduction">
     <div class="row">
@@ -84,10 +80,8 @@
                     <p class="lead">BeerDB is your database for delicious beers and wonderful brewerys.
                         <a href="#" class="open-sign-up-modal">Sign Up</a> and you can post your own beers to database and
                         rate them. So much wow. Free-time project.
-                        <div id="rating"></div>
+                        <%--<div id="rating"></div>--%>
                     </p>
-                    <!-- success = "you have created a new account"-->
-                    <p class="bg-success">${success}</p>
                     </sec:authorize>
 
                     <!-- Introduction text for registered user -->
@@ -132,18 +126,34 @@
     </div> <!-- row -->
 </div> <!-- container -->
 
+<!-- Success modal for completed registration -->
+<div class="modal" id="registration-success-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="loginbox" class="mainbox col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info" >
+                <!-- Modal head -->
+                <div class="panel-heading">
+                    <div class="panel-title">Great success ${username}!</div>
+                    <button type="button" class="close login-close-button" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <!-- Modal body -->
+                <div id="login-panel-body" class="panel-body" >
+                    You just made a new account! Now you can sign in with your username and password.
+                </div> <!-- login-panel-body -->
+            </div> <!-- panel -->
+        </div> <!-- loginbox -->
+    </div> <!-- modal-dialog -->
+</div> <!-- modal -->
 
+<!-- Opens success modal -->
 <script>
-$(document).ready(function() {
-    <c:if test="${openSignInModalIfLoginFail == true}">
-    $('#sign-in-modal').modal('show');
-    </c:if>
-
-    <c:if test="${openSignUpModalIfSignUpFail == true}">
-    $('#sign-up-modal').modal('show');
-    </c:if>
-});
-</script>
+    $(document).ready(function() {
+        <c:if test="${openSuccessModal == true}">
+        $('#registration-success-modal').modal('show');
+        </c:if>
+    });
+</script>S
 
 <!-- Footer (tag file) -->
 <t:footer></t:footer>

@@ -18,8 +18,6 @@
 
         <p class="lead">Add beer to database</p>
 
-        <div class="error login-input-group"><c:out value="${beerExists}"/></div>
-
         <form:form id="validate-add-beer-form" modelAttribute="beer" method="POST" action="${context}/registered/addbeer"
                    class="form-horizontal" role="form">
 
@@ -27,14 +25,14 @@
             Name
             <div class="input-group login-input-group">
                 <span class="input-group-addon"></span>
-                <form:input path="name" class="form-control" placeholder="name of the beer"/>
+                <form:input path="name" class="form-control"/>
             </div>
 
             <!-- Description -->
             Description
             <div class="input-group login-input-group">
                 <span class="input-group-addon"></span>
-                <form:input path="description" class="form-control" placeholder="informal description about the beer. Use english, please"/>
+                <form:input path="description" class="form-control" placeholder="informal description about the beer. Use english, please."/>
             </div>
 
             <!-- Alcohol -->
@@ -78,6 +76,9 @@
                     </c:forEach>
                 </form:select>
             </div>
+
+            <div class="error login-input-group"><c:out value="${beerExists}"/></div>
+            <div class="form-group" id="beererrors"></div>
 
             <div class="login-form-group form-group">
                 <div class="col-sm-12 controls">

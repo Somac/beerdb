@@ -1,9 +1,15 @@
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+@import url(http://fonts.googleapis.com/css?family=Lato);
 
 body {
     padding-bottom: 100px;
     background-color: #ededed;
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.lato{
+    font-family: 'Lato', Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
 }
 
 .menu{
@@ -42,20 +48,13 @@ hr{
 }
 
 
-/* Sign In/Up Modals */
+/* Sign In/Up forms */
 
-.loginbox{
-    margin-top:50px;
-}
 
 .login-close-button{
     float:right;
     position: relative;
     top:-25px;
-}
-
-.login-panel-body{
-    padding-top:30px;
 }
 
 .login-input-group{

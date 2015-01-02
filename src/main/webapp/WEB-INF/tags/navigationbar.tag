@@ -34,10 +34,7 @@
                 <!-- Sign Up / Sign In links are shown for the unregistered user -->
                 <sec:authorize access="isAnonymous()">
                     <li>
-                        <a href="#" class="open-sign-up-modal">Sign Up</a>
-                    </li>
-                    <li>
-                        <a href="#" id="open-sign-in-modal">Sign In</a>
+                        <a href="${context}/signup" type="submit">Sign Up / Sign In</a>
                     </li>
                 </sec:authorize>
 

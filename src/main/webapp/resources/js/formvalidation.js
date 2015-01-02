@@ -5,6 +5,10 @@ $(document).ready(function(){
     */
 
     $('#validate-sign-up-form').validate({
+        errorElement: "div",
+        errorPlacement: function(error, element){
+            error.appendTo("div#errors");
+        },
         rules: {
             username: {
               required: true,
@@ -21,6 +25,24 @@ $(document).ready(function(){
             password2: {
                required: true,
                equalTo: "#password"
+            }
+        },
+        messages: {
+            username: {
+                required: "Username is required",
+                minlength: "Username must be at least 3 characters long"
+            },
+            email: {
+                required: "Email is required",
+                email: "Please enter a valid email address."
+            },
+            password: {
+                required: "Password is required",
+                minlength: "Password must be at least 5 characters long"
+            },
+            password2: {
+                required: "Password is required",
+                equalTo: "Passwords don't match"
             }
         }
     });
@@ -44,6 +66,10 @@ $(document).ready(function(){
     });
 
     $('#validate-add-beer-form').validate({
+        errorElement: "div",
+        errorPlacement: function(error){
+            error.appendTo("div#beererrors");
+        },
         rules: {
             name: {
                 required: true,
@@ -66,6 +92,31 @@ $(document).ready(function(){
                 min: 0.1,
                 max: 100000,
                 number: true
+            }
+        },
+        messages: {
+            name: {
+                required: "Name of the beer is required",
+                minlength: "Name must be at least 3 characters long",
+                maxlength: "Name can't be more than 30 characters"
+
+            },
+            description:{
+                required: "Description is required",
+                minlength: "Description must be at least 3 characters long",
+                maxlength: "Name can't be more than 100 characters"
+            },
+            alcohol:{
+                required: "Alcohol percent is required",
+                min: "Alcohol percent must be greater than or equal to 0.1",
+                max: "Alcohol percent must be less or equal to 100",
+                number: "Please enter only numbers"
+            },
+            "beerPackage.price":{
+                required: "Price is required",
+                min: "Price must be greater than or equal to 0.1",
+                max: "Price must be less or equal to 100.000",
+                number: "Please enter only numbers"
             }
         }
     });

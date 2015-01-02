@@ -35,13 +35,17 @@ public class LoginController {
     private PasswordEncoder passwordEncoder;
 
     @RequestMapping(method = RequestMethod.GET)
-	public String showIndexPage(Model model){
-
-        model.addAttribute("user", new User());
-
+	public String indexPage(){
         return "index";
 	}
 
+    @RequestMapping(value="signup", method = RequestMethod.GET)
+    public String signUpAndSignInForm(Model model){
+
+        model.addAttribute("user", new User());
+
+        return "registration";
+    }
 
     @RequestMapping(value="signup", method = RequestMethod.POST)
     public String signUpFormSubmit(@Valid @ModelAttribute("user") User user, BindingResult bindingResult,
@@ -49,22 +53,20 @@ public class LoginController {
 
         if(bindingResult.hasErrors()){
             //should never go here, because front-end validation is 1:1 with back-end validation
-            return "index";
+            return "registration";
         }else if(userService.checkIfUsernameAlreadyExists(user.getUsername())){
-            model.addAttribute("openSignUpModalIfSignUpFail", true);
             model.addAttribute("signupError", "Username already exists. Choose another.");
-            return "index";
+            return "registration";
         }else if(userService.checkIfEmailAlreadyExists(user.getEmail())){
-            model.addAttribute("openSignUpModalIfSignUpFail", true);
             model.addAttribute("signupError", "Email already exists. Choose another.");
-            return "index";
+            return "registration";
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.saveUser(user);
 
-        redirectAttributes.addFlashAttribute("success",
-                "You just made a new account! Now you can sign in with your username and password");
+        redirectAttributes.addFlashAttribute("username", user.getUsername());
+        redirectAttributes.addFlashAttribute("openSuccessModal", true);
 
         return "redirect:/";
     }
@@ -74,10 +76,9 @@ public class LoginController {
     public String loginFail(Model model) {
 
         model.addAttribute("user", new User());
-        model.addAttribute("openSignInModalIfLoginFail", true);
         model.addAttribute("loginError", "Username and/or password is wrong!");
 
-        return "index";
+        return "registration";
     }
 
     //Main page for registered user
