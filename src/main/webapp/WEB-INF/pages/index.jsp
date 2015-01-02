@@ -78,7 +78,7 @@
                     <!-- Introduction text for unregistered user -->
                     <sec:authorize access="isAnonymous()">
                     <p class="lead">BeerDB is your database for delicious beers and wonderful brewerys.
-                        <a href="#" class="open-sign-up-modal">Sign Up</a> and you can post your own beers to database and
+                        <a href="${context}/signup" type="submit">Sign Up</a> and you can post your own beers to database and
                         rate them. So much wow. Free-time project.
                     </p>
                     </sec:authorize>
@@ -152,7 +152,7 @@
         $('#registration-success-modal').modal('show');
         </c:if>
     });
-</script>S
+</script>
 
 <!-- Footer (tag file) -->
 <t:footer></t:footer>
