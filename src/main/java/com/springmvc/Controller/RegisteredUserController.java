@@ -67,7 +67,8 @@ public class RegisteredUserController {
 
         beerDAO.saveBeerToDB(beer);
 
-        redirectAttributes.addFlashAttribute("beerAdded", "You successfully added \"" + beer.getName() + "\" to the database!");
+        redirectAttributes.addFlashAttribute("message", "You successfully added '" + beer.getName() + "' to the database!");
+        redirectAttributes.addFlashAttribute("openSuccessModal", true);
 
         return "redirect:/";
     }

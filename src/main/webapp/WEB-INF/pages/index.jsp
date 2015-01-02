@@ -65,10 +65,10 @@
     </script>
 </head>
 <body>
-<!-- Navigation bar (tag file) -->
+<!-- Navigation bar -->
 <t:navigationbar></t:navigationbar>
 
-<!-- Actual body of the site -->
+<!-- Introduction -->
 <div class="container-fluid introduction">
     <div class="row">
         <div class="col-md-6 col-md-offset-3 text-center">
@@ -87,15 +87,13 @@
                     <sec:authorize access="isAuthenticated()">
                     <p class="lead">You are logged in as "${principalUsername}"
                         and this text is mainly placeholder. </p>
-
-                     <!-- "You added beer to db" -->
-                     <p class="bg-success">${beerAdded}</p>
                     </sec:authorize>
             </span>
         </div>
     </div>
 </div>
 
+<!-- Menu -->
 <div class="container">
     <div class="row">
         <div class="menu">
@@ -125,36 +123,36 @@
     </div> <!-- row -->
 </div> <!-- container -->
 
-<!-- Success modal for completed registration -->
-<div class="modal" id="registration-success-modal" tabindex="-1" role="dialog" aria-hidden="true">
+
+<!-- Success modal when user registration or adding beer to db is completed -->
+<div class="modal" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div id="loginbox" class="mainbox col-sm-8 col-sm-offset-2">
-            <div class="panel panel-info" >
-                <!-- Modal head -->
-                <div class="panel-heading">
-                    <div class="panel-title">Great success ${username}!</div>
-                    <button type="button" class="close login-close-button" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                </div>
-                <!-- Modal body -->
-                <div id="login-panel-body" class="panel-body" >
-                    You just made a new account! Now you can sign in with your username and password.
-                </div> <!-- login-panel-body -->
-            </div> <!-- panel -->
-        </div> <!-- loginbox -->
-    </div> <!-- modal-dialog -->
-</div> <!-- modal -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Great success!</h4>
+            </div>
+            <div class="modal-body">
+                <!-- "You just made a new account.." OR "You successfully added beer.." -->
+                ${message}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Opens success modal -->
 <script>
     $(document).ready(function() {
         <c:if test="${openSuccessModal == true}">
-        $('#registration-success-modal').modal('show');
+        $('#success-modal').modal('show');
         </c:if>
     });
 </script>
 
-<!-- Footer (tag file) -->
+<!-- Footer -->
 <t:footer></t:footer>
 </body>
 </html>

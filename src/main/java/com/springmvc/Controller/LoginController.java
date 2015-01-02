@@ -65,7 +65,8 @@ public class LoginController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.saveUser(user);
 
-        redirectAttributes.addFlashAttribute("username", user.getUsername());
+        redirectAttributes.addFlashAttribute("message",
+                "Congratulations " + user.getUsername() + ". You just made a new account! Now you can sign in with your username and password.");
         redirectAttributes.addFlashAttribute("openSuccessModal", true);
 
         return "redirect:/";
@@ -83,7 +84,7 @@ public class LoginController {
 
     //Main page for registered user
     @RequestMapping(value = "registered/main", method = RequestMethod.GET)
-    public String registeredUserMain(Model model) {
+    public String registeredUserMain() {
         return "redirect:/";
     }
 
