@@ -80,7 +80,6 @@
                     <p class="lead">BeerDB is your database for delicious beers and wonderful brewerys.
                         <a href="#" class="open-sign-up-modal">Sign Up</a> and you can post your own beers to database and
                         rate them. So much wow. Free-time project.
-                        <%--<div id="rating"></div>--%>
                     </p>
                     </sec:authorize>
 
