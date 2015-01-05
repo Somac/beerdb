@@ -40,7 +40,7 @@ public class UserDAOImpl implements UserDAO{
 
     public List<User> findAllUsers(){
 
-        String sql = "SELECT userID, username, firstname, lastname, email, created FROM User";
+        String sql = "SELECT userID, password, username, firstname, lastname, email, created FROM User";
 
         RowMapper<User> userRowMapper = new UserRowMapper();
 
@@ -51,7 +51,7 @@ public class UserDAOImpl implements UserDAO{
 
     public User findUserByUsername(String username) throws EmptyResultDataAccessException{
 
-        String sql = "SELECT userID, username, firstname, lastname, email, created FROM User WHERE username=?";
+        String sql = "SELECT userID, password, username, firstname, lastname, email, created FROM User WHERE username=?";
 
         Object[] parameters = new Object[]{username};
         RowMapper<User> userRowMapper = new UserRowMapper();
@@ -63,7 +63,7 @@ public class UserDAOImpl implements UserDAO{
 
     public User findUserByEmail(String email) throws EmptyResultDataAccessException{
 
-        String sql = "SELECT username, firstname, lastname, email, created FROM User WHERE email=?";
+        String sql = "SELECT username, password, firstname, lastname, email, created FROM User WHERE email=?";
 
         Object[] parameters = new Object[]{email};
         RowMapper<User> userRowMapper = new UserRowMapper();
