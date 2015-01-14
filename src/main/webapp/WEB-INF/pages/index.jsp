@@ -143,6 +143,7 @@
     </div>
 </div>
 
+
 <!-- Opens success modal -->
 <script>
     $(document).ready(function() {

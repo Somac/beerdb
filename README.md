@@ -7,5 +7,5 @@ BeerDB
 
 WORK IN PROGRESS - http://beerdb-hobbyproject.rhcloud.com/
 
-CRUD application where you can post beers to database and rate them as an registered user.
+CRUD application where you can post beers to database and rate them (coming.. ) as an registered user.
 Unregistered users can browse beers and ratings. So much wow. Free-time project for the fun.

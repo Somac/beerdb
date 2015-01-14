@@ -51,24 +51,27 @@ public class UserDAOImpl implements UserDAO{
 
     public User findUserByUsername(String username) throws EmptyResultDataAccessException{
 
-        String sql = "SELECT userID, password, username, firstname, lastname, email, created FROM User WHERE username=?";
-
-        Object[] parameters = new Object[]{username};
-        RowMapper<User> userRowMapper = new UserRowMapper();
-
-        User u = jdbcTemplate.queryForObject(sql, parameters, userRowMapper);
+        User u = findUserWithDynamicSQLClause(SQLQuery.USER_NAME, username);
 
         return u;
     }
 
     public User findUserByEmail(String email) throws EmptyResultDataAccessException{
 
-        String sql = "SELECT username, password, firstname, lastname, email, created FROM User WHERE email=?";
+        User u = findUserWithDynamicSQLClause(SQLQuery.EMAIL, email);
 
-        Object[] parameters = new Object[]{email};
+        return u;
+    }
+
+    private User findUserWithDynamicSQLClause(SQLQuery clause, String searchParam){
+
+        String sql = "SELECT userID, password, username, firstname, lastname, email, created " +
+                "FROM User WHERE " + clause.getClause() + "=?";
+
+        Object[] parameters = new Object[]{searchParam};
         RowMapper<User> userRowMapper = new UserRowMapper();
 
-        User u  = jdbcTemplate.queryForObject(sql, parameters, userRowMapper);
+        User u = jdbcTemplate.queryForObject(sql, parameters, userRowMapper);
 
         return u;
     }
