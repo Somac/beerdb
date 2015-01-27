@@ -7,10 +7,10 @@ $(document).ready(function(){
     $.getJSON("fetchColumnOneData", function(response){
         console.log(response);
 
-        var template = $('#template-column-one').html();
-        var text = Mustache.render(template, response);
+        var output = $('#template-column-one').html();
+        var template = Handlebars.compile(output);
 
-        $('#column-one-content').html(text);
+        $('#column-one-content').html(template(response));
 
     });
 
@@ -40,10 +40,10 @@ $(document).ready(function(){
             var columnThree = $('#column-three-content');
             columnThree.empty();
 
-            var template = $('#template-column-two').html();
-            var text = Mustache.render(template, response);
+            var output = $('#template-column-two').html();
+            var template = Handlebars.compile(output);
 
-            $('#column-two-content').html(text);
+            $('#column-two-content').html(template(response));
         }
     });
 
@@ -70,9 +70,11 @@ $(document).ready(function(){
         function appendResponseToColumnThree(response){
             console.log(response);
 
-            var template = $('#template-column-three').html();
-            var text = Mustache.render(template, response);
-            $('#column-three-content').html(text);
+            var output = $('#template-column-three').html();
+            var template = Handlebars.compile(output);
+
+            $('#column-three-content').html(template(response));
+
         }
 
     });

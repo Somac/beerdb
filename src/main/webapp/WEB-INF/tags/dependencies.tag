@@ -11,7 +11,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 <script src="<c:url value="/resources/js/callajax.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/formvalidation.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/beerdb.js"/>" type="text/javascript"></script>

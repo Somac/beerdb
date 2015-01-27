@@ -15,26 +15,30 @@
     <t:dependencies></t:dependencies>
 
     <!-- Templating for first column's data -->
-    <script type="text/template" id="template-column-one">
+    <script type="text/x-handlebars-template" id="template-column-one">
         {{#.}}
             <li value="{{id}}"><a href="#" data-toggle="tab">{{name}}</a></li>
         {{/.}}
     </script>
 
     <!-- Templating for second column's data -->
-    <script type="text/template" id="template-column-two">
+    <script type="text/x-handlebars-template" id="template-column-two">
         {{#.}}
             <li value="{{id}}"><a href="{{id}}" data-toggle="tab">{{name}}</a></li>
         {{/.}}
     </script>
 
     <!-- Templating for third column's data -->
-    <script type="text/template" id="template-column-three">
+    <script type="text/x-handlebars-template" id="template-column-three">
         <h1>{{name}}</h1>
         {{#beerPackage}}
         <p class="price">{{price}} € <span class="size">{{aPackage.size}}l</span><br></p>
         <p class="per-liter">{{pricePerLiter}} €/l</p>
         {{/beerPackage}}
+
+        <div class="title">
+            <h2>Rating</h2>
+        </div>
 
         <div class="title">
             <h2>Description</h2>
@@ -57,10 +61,6 @@
         <p>{{username}} on {{created}}</p>
         {{/user}}
         <hr>
-
-        <div class="title">
-            <h2>Rating</h2>
-        </div>
 
     </script>
 </head>

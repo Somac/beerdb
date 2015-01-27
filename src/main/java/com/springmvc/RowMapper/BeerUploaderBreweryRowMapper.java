@@ -27,6 +27,16 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
                     beer.setDescription(rs.getString("description"));
                     beer.setAlcohol(rs.getDouble("alcohol"));
 
+                    //Uploader of the beer
+                    User uploader = new User();
+                    uploader.setId(rs.getInt("userID"));
+                    uploader.setUsername(rs.getString("username"));
+                    uploader.setEmail(rs.getString("email"));
+                    uploader.setCreated(rs.getDate("created"));
+
+                    //Rating
+                    //Henkilö-olio
+
                     //Brewery of the beer
                     Brewery brewery = new Brewery();
                     brewery.setId(rs.getInt("breweryID"));
@@ -39,6 +49,7 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
 
                     //Package (size) of the beer
                     aPackage aPackage = new aPackage();
+                    aPackage.setPackageID(rs.getInt("packageID"));
                     aPackage.setSize(rs.getDouble("size"));
 
                     //Actual package (price) of the beer
@@ -46,14 +57,6 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
                     beerPackage.setBeerPackageID(rs.getInt("beer_packageID"));
                     beerPackage.setPrice(rs.getDouble("price"));
 
-                    //Uploader of the beer
-                    User uploader = new User();
-                    uploader.setId(rs.getInt("userID"));
-                    uploader.setUsername(rs.getString("username"));
-                    uploader.setFirstname(rs.getString("firstname"));
-                    uploader.setLastname(rs.getString("lastname"));
-                    uploader.setEmail(rs.getString("email"));
-                    uploader.setCreated(rs.getDate("created"));
 
                     //Sub-objects to Beer object
                     brewery.setCountry(country);
