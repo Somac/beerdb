@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class Beer{
@@ -23,7 +24,8 @@ public class Beer{
     private BeerStyle beerStyle;
     private User user;
     private BeerPackage beerPackage;
-    private List<BeerRawMaterial> beerRawMaterialList;
+
+    private Map<String, Integer> beerRatings;
 
     public Beer() {
         this.brewery = new Brewery();
@@ -91,16 +93,16 @@ public class Beer{
     public BeerPackage getBeerPackage() {
         return beerPackage;
     }
-
     public void setBeerPackage(BeerPackage beerPackage) {
         this.beerPackage = beerPackage;
     }
 
-    public List<BeerRawMaterial> getBeerRawMaterialList() {
-        return beerRawMaterialList;
+    public Map<String, Integer> getBeerRatings() {
+        return beerRatings;
+    }
+    public void setBeerRatings(Map<String, Integer> beerRatings) {
+        this.beerRatings = beerRatings;
     }
 
-    public void setBeerRawMaterialList(List<BeerRawMaterial> beerRawMaterialList) {
-        this.beerRawMaterialList = beerRawMaterialList;
-    }
+
 }

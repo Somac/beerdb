@@ -6,7 +6,9 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /*
 This RowMapper is only used by BeerDAO.findBeerBreweryUploaderByID for gathering data to menu's column three
@@ -14,9 +16,9 @@ where all the information about chosen beer is shown.
 */
 public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
 
-        public Beer mapRow(ResultSet rs, int rowNum) throws SQLException {
+        public Beer mapRow(ResultSet rs, int rowNum) throws SQLException{
 
-//          List<BeerRawMaterial> beerRawMaterialList = new ArrayList<BeerRawMaterial>();
+            Map<String, Integer> beerRatings = new HashMap();
             Beer beer = null;
 
             do{
@@ -31,11 +33,7 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
                     User uploader = new User();
                     uploader.setId(rs.getInt("userID"));
                     uploader.setUsername(rs.getString("username"));
-                    uploader.setEmail(rs.getString("email"));
                     uploader.setCreated(rs.getDate("created"));
-
-                    //Rating
-                    //Henkilö-olio
 
                     //Brewery of the beer
                     Brewery brewery = new Brewery();
@@ -57,7 +55,6 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
                     beerPackage.setBeerPackageID(rs.getInt("beer_packageID"));
                     beerPackage.setPrice(rs.getDouble("price"));
 
-
                     //Sub-objects to Beer object
                     brewery.setCountry(country);
                     beerPackage.setaPackage(aPackage);
@@ -69,18 +66,13 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
                     beer.setBrewery(brewery);
                     beer.setUser(uploader);
                 }
-
-//                //Raw materials used in beer to own list
-//                BeerRawMaterial beerRawMaterial = new BeerRawMaterial();
-//                beerRawMaterial.setId(rs.getInt("beer_raw_materialID"));
-//                beerRawMaterial.setAmount(rs.getDouble("amount"));
-//                beerRawMaterial.setRawMaterial(rs.getString("raw_material"));
-//
-//                beerRawMaterialList.add(beerRawMaterial);
+                    //TÄHÄN VIELÄ RATKAISU
+                    beerRatings.put(rs.getString("email"), rs.getInt("rating"));
 
             }while(rs.next());
 
-//            beer.setBeerRawMaterialList(beerRawMaterialList);
+                  beer.setBeerRatings(beerRatings);
+
             return beer;
         }
     }

@@ -47,24 +47,24 @@ public class BeerDAOImpl implements BeerDAO {
 
 
     public Beer findBeerBreweryUploaderByID(int beerID){
-        String sql = "SELECT b.beerID, b.name, b.description, b.alcohol, " +
-                "bre.breweryID, bre.brewery_name, " +
-                "c.countryID, c.country, " +
-                "u.userID, u.username, u.firstname, u.lastname, u.email, u.created, " +
-                "bp.beer_packageID, bp.price, " +
-                "p.packageID, p.size " +
-                "FROM Beer as b " +
-                "INNER JOIN User as u " +
-                "INNER JOIN Brewery as bre " +
-                "INNER JOIN Country as c " +
-                "INNER JOIN Beer_package as bp " +
-                "INNER JOIN Package as p " +
-                "ON b.userID = u.userID " +
-                "AND b.breweryID = bre.breweryID " +
-                "AND bre.countryID = c.countryID " +
-                "AND b.beerID = bp.beerID " +
-                "AND bp.packageID = p.packageID " +
-                "WHERE b.beerID = ? " +
+        String sql = "SELECT b.beerID, b.name, b.description, b.alcohol, usr.userID, usr.username, usr.created,\n" +
+                "u.userID, u.email, r.rating, bre.breweryID, bre.brewery_name, c.countryID, c.country, bp.beer_packageID, bp.price, p.packageID, p.size \n" +
+                "FROM Beer as b\n" +
+                "INNER JOIN Rating as r\n" +
+                "INNER JOIN User as u\n" +
+                "INNER JOIN Brewery as bre\n" +
+                "INNER JOIN Country as c\n" +
+                "INNER JOIN Beer_package as bp\n" +
+                "INNER JOIN Package as p\n" +
+                "INNER JOIN User as usr\n" +
+                "ON b.beerID = r.beerID\n" +
+                "AND r.userID = u.userID\n" +
+                "AND b.breweryID = bre.breweryID\n" +
+                "AND bre.breweryID = c.countryID\n" +
+                "AND b.beerID = bp.beerID\n" +
+                "AND bp.packageID = p.packageID\n" +
+                "AND usr.userID = b.userID\n" +
+                "WHERE b.beerID = ?\n" +
                 "ORDER BY b.name;";
 
         Object[] parameters = new Object[]{beerID};
@@ -74,6 +74,8 @@ public class BeerDAOImpl implements BeerDAO {
 
         return beer;
     }
+
+
 
     public Beer findBeerByName(String name) throws EmptyResultDataAccessException{
 
