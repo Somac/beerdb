@@ -47,23 +47,23 @@ public class BeerDAOImpl implements BeerDAO {
 
 
     public Beer findBeerBreweryUploaderByID(int beerID){
-        String sql = "SELECT b.beerID, b.name, b.description, b.alcohol, usr.userID, usr.username, usr.created,\n" +
-                "u.userID, u.email, r.rating, bre.breweryID, bre.brewery_name, c.countryID, c.country, bp.beer_packageID, bp.price, p.packageID, p.size \n" +
-                "FROM Beer as b\n" +
+        String sql = "SELECT b.beerID, b.name, b.description, b.alcohol, b.created, u.userID, u.username, u.firstname, u.lastname, \n" +
+                "bre.breweryID, bre.brewery_name, r.rating, r.userID, usr.email, c.countryID, c.country, bp.beer_packageID, bp.price, p.packageID, p.size \n" +
+                "FROM Beer as b \n" +
+                "INNER JOIN User as u \n" +
+                "INNER JOIN Brewery as bre \n" +
+                "INNER JOIN Country as c \n" +
+                "INNER JOIN Beer_package as bp \n" +
+                "INNER JOIN Package as p \n" +
                 "INNER JOIN Rating as r\n" +
-                "INNER JOIN User as u\n" +
-                "INNER JOIN Brewery as bre\n" +
-                "INNER JOIN Country as c\n" +
-                "INNER JOIN Beer_package as bp\n" +
-                "INNER JOIN Package as p\n" +
                 "INNER JOIN User as usr\n" +
-                "ON b.beerID = r.beerID\n" +
-                "AND r.userID = u.userID\n" +
-                "AND b.breweryID = bre.breweryID\n" +
-                "AND bre.breweryID = c.countryID\n" +
-                "AND b.beerID = bp.beerID\n" +
+                "ON b.userID = u.userID \n" +
+                "AND b.breweryID = bre.breweryID \n" +
+                "AND bre.countryID = c.countryID \n" +
+                "AND b.beerID = bp.beerID \n" +
                 "AND bp.packageID = p.packageID\n" +
-                "AND usr.userID = b.userID\n" +
+                "AND b.beerID = r.beerID\n" +
+                "AND r.userID = usr.userID\n" +
                 "WHERE b.beerID = ?\n" +
                 "ORDER BY b.name;";
 

@@ -5,9 +5,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /*
@@ -28,12 +26,12 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
                     beer.setName(rs.getString("name"));
                     beer.setDescription(rs.getString("description"));
                     beer.setAlcohol(rs.getDouble("alcohol"));
+                    beer.setCreated(rs.getDate("created"));
 
                     //Uploader of the beer
                     User uploader = new User();
                     uploader.setId(rs.getInt("userID"));
                     uploader.setUsername(rs.getString("username"));
-                    uploader.setCreated(rs.getDate("created"));
 
                     //Brewery of the beer
                     Brewery brewery = new Brewery();

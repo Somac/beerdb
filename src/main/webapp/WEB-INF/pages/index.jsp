@@ -38,6 +38,9 @@
 
         <div class="title">
             <h2>Rating</h2>
+            {{#each beerRatings}}
+                Key: {{@key}} value = {{this}}
+            {{/each}}
         </div>
 
         <div class="title">
@@ -58,7 +61,7 @@
             <h2>Uploader</h2>
         </div>
         {{#user}}
-        <p>{{username}} on {{created}}</p>
+        <p>{{username}} on {{../created}}</p>
         {{/user}}
         <hr>
 
