@@ -1,8 +1,8 @@
 BeerDB
 ===========
 
-###### Technologies used: Java 7, little bit of AJAX, REST/JSON
-###### Tools used: Maven, Spring MVC / DI / JDBC, Bootstrap, MariaDB, jQuery, Mustache.js
+###### Technologies used: Java 7, little bit of AJAX & REST/JSON
+###### Tools used: Maven, Spring MVC / DI / JDBC, Bootstrap, MariaDB, jQuery, Handlebars.js
 
 
 WORK IN PROGRESS - http://beerdb-hobbyproject.rhcloud.com/

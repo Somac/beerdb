@@ -40,7 +40,7 @@ public class BeerPackage{
         return pricePerLiter;
     }
 
-    public void setPricePerLiter() {
+    public void calculatePricePerLiter() {
         this.pricePerLiter = Math.floor(this.getPrice() / this.aPackage.getSize() * 100) / 100;
     }
 

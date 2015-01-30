@@ -51,7 +51,6 @@
                             ${principalUsername} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="${context}/registered/profile" type="submit">Profile</a></li>
-                            <li><a href="#">Settings</a></li>
                             <li class="divider"></li>
                             <li><a href="${context}/logout">
                                 <span class="glyphicon glyphicon-log-out"></span>

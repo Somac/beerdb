@@ -95,21 +95,25 @@ public class BeerDAOImpl implements BeerDAO {
         String sql = "INSERT INTO Beer (name, description, alcohol, breweryID, styleID, userID) VALUES (?,?,?,?,?,?)";
         String sql2 = "INSERT INTO Beer_package (price, packageID, beerID) VALUES (?,?,LAST_INSERT_ID())";
 
+        // Beer has to have one "ghost vote" that sql query's don't fail
+        String sql3 = "INSERT INTO Rating(rating, beerID, userID) VALUES (0, LAST_INSERT_ID(), 1)";
+
         Object[] parameters = {
-                beer.getName(),
-                beer.getDescription(),
-                beer.getAlcohol(),
-                beer.getBrewery().getId(),
-                beer.getBeerStyle().getId(),
-                beer.getUser().getId()
+            beer.getName(),
+            beer.getDescription(),
+            beer.getAlcohol(),
+            beer.getBrewery().getId(),
+            beer.getBeerStyle().getId(),
+            beer.getUser().getId()
         };
 
         Object[] parameters2 = {
-          beer.getBeerPackage().getPrice(),
-          beer.getBeerPackage().getaPackage().getPackageID()
+            beer.getBeerPackage().getPrice(),
+            beer.getBeerPackage().getaPackage().getPackageID()
         };
 
         jdbcTemplate.update(sql, parameters);
         jdbcTemplate.update(sql2, parameters2);
+        jdbcTemplate.update(sql3);
     }
 }

@@ -38,10 +38,15 @@
 
         <div class="title">
             <h2>Rating</h2>
-            {{#each beerRatings}}
-                Key: {{@key}} value = {{this}}
-            {{/each}}
         </div>
+            {{#rating}}
+                {{#if averageRate}}
+                    <p>{{averageRate}} votes out of {{amountOfRaters}} voters</p>
+                    {{else}}
+                    <p>No votes given.</p>
+                {{/if}}
+            {{/rating}}
+        <hr>
 
         <div class="title">
             <h2>Description</h2>
@@ -81,8 +86,8 @@
                     <!-- Introduction text for unregistered user -->
                     <sec:authorize access="isAnonymous()">
                     <p class="lead">BeerDB is your database for delicious beers and wonderful brewerys.
-                        <a href="${context}/signup" type="submit">Sign Up</a> and you can post your own beers to database and
-                        rate them. So much wow. Free-time project.
+                        <a href="${context}/signup" type="submit">Sign Up</a> and you can post your own beer to database and
+                        rate others. So much wow. Free-time project.
                     </p>
                     </sec:authorize>
 

@@ -103,8 +103,8 @@ $(document).ready(function(){
             },
             description:{
                 required: "Description is required",
-                minlength: "Description must be at least 3 characters long",
-                maxlength: "Name can't be more than 100 characters"
+                minlength: "Description must be at least 5 characters long",
+                maxlength: "Description can't be more than 100 characters"
             },
             alcohol:{
                 required: "Alcohol percent is required",

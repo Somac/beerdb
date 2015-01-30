@@ -14,9 +14,11 @@ where all the information about chosen beer is shown.
 */
 public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
 
+    private int overallRating = 0;
+    private int raters = 0;
+
         public Beer mapRow(ResultSet rs, int rowNum) throws SQLException{
 
-            Map<String, Integer> beerRatings = new HashMap();
             Beer beer = null;
 
             do{
@@ -58,18 +60,23 @@ public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{
                     beerPackage.setaPackage(aPackage);
 
                     //dynamically calculates per liter price
-                    beerPackage.setPricePerLiter();
+                    beerPackage.calculatePricePerLiter();
 
                     beer.setBeerPackage(beerPackage);
                     beer.setBrewery(brewery);
                     beer.setUser(uploader);
                 }
-                    //TÄHÄN VIELÄ RATKAISU
-                    beerRatings.put(rs.getString("email"), rs.getInt("rating"));
+                    overallRating += rs.getInt("rating");
+                    raters++;
 
             }while(rs.next());
 
-                  beer.setBeerRatings(beerRatings);
+                  Rating rating = new Rating();
+                  rating.setOverallRating(overallRating);
+                  rating.setAmountOfRaters(raters-1); //there is always one ghost voter that sql query works
+                  rating.calculateAverageRate();
+
+                  beer.setRating(rating);
 
             return beer;
         }

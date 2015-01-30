@@ -23,14 +23,15 @@ public class Beer{
     private BeerStyle beerStyle;
     private User user;
     private BeerPackage beerPackage;
+    private Rating rating;
 
-    private Map<String, Integer> beerRatings;
 
     public Beer() {
         this.brewery = new Brewery();
         this.beerStyle = new BeerStyle();
         this.user = new User();
         this.beerPackage = new BeerPackage();
+        this.rating = new Rating();
     }
 
     public int getId() {
@@ -96,12 +97,10 @@ public class Beer{
         this.beerPackage = beerPackage;
     }
 
-    public Map<String, Integer> getBeerRatings() {
-        return beerRatings;
+    public Rating getRating() {
+        return rating;
     }
-    public void setBeerRatings(Map<String, Integer> beerRatings) {
-        this.beerRatings = beerRatings;
+    public void setRating(Rating rating) {
+        this.rating = rating;
     }
-
-
 }
