@@ -17,7 +17,7 @@
     <!-- Templating for first column's data -->
     <script type="text/x-handlebars-template" id="template-column-one">
         {{#.}}
-            <li value="{{id}}"><a href="#" data-toggle="tab">{{name}}</a></li>
+        <li value="{{id}}"><a href="#" data-toggle="tab">{{name}}</a></li>
         {{/.}}
     </script>
 
@@ -41,7 +41,8 @@
         </div>
             {{#rating}}
                 {{#if averageRate}}
-                    <p>{{averageRate}} votes out of {{amountOfRaters}} voters</p>
+                    <p>{{averageRate}} stars out of 5</p>
+                    <p>{{amountOfRaters}} voters</p>
                     {{else}}
                     <p>No votes given.</p>
                 {{/if}}

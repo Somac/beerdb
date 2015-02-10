@@ -1,7 +1,5 @@
 package com.springmvc.RowMapper;
 
-
-import com.springmvc.Bean.BeerPackage;
 import com.springmvc.Bean.aPackage;
 import org.springframework.jdbc.core.RowMapper;
 

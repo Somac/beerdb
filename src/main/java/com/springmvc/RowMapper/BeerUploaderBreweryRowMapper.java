@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /*
-This RowMapper is only used by BeerDAO.findBeerBreweryUploaderByID for gathering data to menu's column three
+This RowMapper is only used by BeerDAO.findBeerBreweryUploaderByID() for gathering data to menu's column three
 where all the information about chosen beer is shown.
 */
 public class BeerUploaderBreweryRowMapper implements RowMapper<Beer>{

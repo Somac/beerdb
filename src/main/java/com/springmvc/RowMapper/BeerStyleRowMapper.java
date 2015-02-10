@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//This RowMapper is only used by BeerDAO.findAllBeerStyles for gathering data to menu's column one.
+//This RowMapper is only used by BeerDAO.findAllBeerStyles() for gathering data to menu's column one.
 public class BeerStyleRowMapper implements RowMapper<BeerStyle>{
 
     public BeerStyle mapRow(ResultSet rs, int rowNum) throws SQLException {

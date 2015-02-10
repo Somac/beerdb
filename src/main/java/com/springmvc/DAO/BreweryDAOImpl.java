@@ -17,7 +17,6 @@ public class BreweryDAOImpl implements BreweryDAO {
     JdbcTemplate jdbcTemplate;
 
     public List<Brewery> findAllBrewerys(){
-
         String sql = "SELECT breweryID, brewery_name FROM Brewery ORDER BY brewery_name";
 
         RowMapper<Brewery> breweryRowMapper = new BreweryRowMapper();

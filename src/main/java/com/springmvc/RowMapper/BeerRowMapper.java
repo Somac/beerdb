@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /*
- * This RowMapper is used by BeerDAO.findAllBeerStyles for gathering data to menu's column two and
+ * This RowMapper is used by BeerDAO.findAllBeerStyles() for gathering data to menu's column two and
  * BeerDAO.findBeerByName for checking if posted beer already exists in the db.
  */
 

@@ -78,7 +78,6 @@ public class BeerDAOImpl implements BeerDAO {
 
 
     public Beer findBeerByName(String name) throws EmptyResultDataAccessException{
-
         String sql = "SELECT beerID, name, description, alcohol, created, breweryID, styleID FROM Beer WHERE name=?";
 
         Object[] parameters = new Object[]{name};
@@ -91,7 +90,6 @@ public class BeerDAOImpl implements BeerDAO {
 
     @Transactional(isolation=Isolation.READ_COMMITTED, readOnly=false)
     public void saveBeerToDB(Beer beer){
-
         String sql = "INSERT INTO Beer (name, description, alcohol, breweryID, styleID, userID) VALUES (?,?,?,?,?,?)";
         String sql2 = "INSERT INTO Beer_package (price, packageID, beerID) VALUES (?,?,LAST_INSERT_ID())";
 

@@ -17,7 +17,6 @@ public class PackageDAOImpl implements PackageDAO {
     private JdbcTemplate jdbcTemplate;
 
     public List<aPackage> findAllPackageSizes(){
-
         String sql = "SELECT packageID, size FROM Package";
 
         RowMapper<aPackage> packageRowMapper = new aPackageRowMapper();

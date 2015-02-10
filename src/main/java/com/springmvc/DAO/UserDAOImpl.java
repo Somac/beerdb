@@ -39,7 +39,6 @@ public class UserDAOImpl implements UserDAO{
 
 
     public List<User> findAllUsers(){
-
         String sql = "SELECT userID, password, username, firstname, lastname, email, created FROM User";
 
         RowMapper<User> userRowMapper = new UserRowMapper();
@@ -50,21 +49,18 @@ public class UserDAOImpl implements UserDAO{
     }
 
     public User findUserByUsername(String username) throws EmptyResultDataAccessException{
-
         User u = findUserWithDynamicSQLClause(SQLQuery.USER_NAME, username);
 
         return u;
     }
 
     public User findUserByEmail(String email) throws EmptyResultDataAccessException{
-
         User u = findUserWithDynamicSQLClause(SQLQuery.EMAIL, email);
 
         return u;
     }
 
     private User findUserWithDynamicSQLClause(SQLQuery clause, String searchParam){
-
         String sql = "SELECT userID, password, username, firstname, lastname, email, created " +
                 "FROM User WHERE " + clause.getClause() + "=?";
 

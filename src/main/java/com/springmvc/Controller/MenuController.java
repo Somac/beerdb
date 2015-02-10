@@ -48,10 +48,6 @@ public class MenuController {
 
         Beer beer = beerDAO.findBeerBreweryUploaderByID(beerID);
 
-//        for(String k : beer.getBeerRatings().keySet()){
-//            System.out.println(k + " " + beer.getBeerRatings().get(k));
-//        }
-
         return beer;
     }
 }
